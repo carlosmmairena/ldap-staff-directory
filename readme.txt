@@ -2,7 +2,7 @@
 Contributors:      carlosmmairena
 Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
-Tested up to:      6.9
+Tested up to:      7.0
 Requires PHP:      7.4
 Stable tag:        1.1.1
 License:           GPLv2 or later
@@ -79,6 +79,7 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Ca
 
 = 1.1.1 =
 * Improvement: LDAP user retrieval now uses RFC 2696 paged results (LDAP_CONTROL_PAGEDRESULTS), allowing the plugin to retrieve all employees from directories with more than 1,000 users — previously, Active Directory's default MaxPageSize limit silently truncated results.
+* Chore: Verified compatibility with WordPress 7.0.
 
 = 1.1.0 =
 * Feature: Department filter bar — dynamically generated chips above the directory grid. Clicking a chip filters employees by department with horizontal scroll for 15+ departments.
