@@ -64,8 +64,7 @@ class LDAP_ED_Connector {
 			}
 		}
 
-		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		$this->connection = @ldap_connect( $server, $port );
+		$this->connection = @ldap_connect( $server, $port ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 
 		if ( ! $this->connection ) {
 			return new \WP_Error( 'ldap_connect_failed', __( 'Could not create LDAP connection handle.', 'ldap-staff-directory' ) );
@@ -102,8 +101,7 @@ class LDAP_ED_Connector {
 			);
 		}
 
-		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		$bound = @ldap_bind( $this->connection, $bind_dn, $bind_pass );
+		$bound = @ldap_bind( $this->connection, $bind_dn, $bind_pass ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 
 		if ( ! $bound ) {
 			$error = ldap_error( $this->connection );
@@ -119,6 +117,9 @@ class LDAP_ED_Connector {
 
 	/**
 	 * Search the LDAP directory and return an array of user data.
+	 *
+	 * Uses RFC 2696 paged results (LDAP_CONTROL_PAGEDRESULTS) to retrieve all
+	 * records regardless of the server's MaxPageSize limit (AD default: 1000).
 	 *
 	 * @return array|\WP_Error
 	 */
@@ -138,34 +139,68 @@ class LDAP_ED_Connector {
 		}
 
 		$attributes = array( 'cn', 'displayname', 'mail', 'title', 'department', 'telephonenumber' );
+		$users      = array();
+		$cookie     = '';
 
-		// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-		$search = @ldap_search( $this->connection, $base_ou, $filter, $attributes );
-
-		if ( ! $search ) {
-			$error = ldap_error( $this->connection );
-			return new \WP_Error(
-				'ldap_search_failed',
-				/* translators: %s: LDAP error message */
-				sprintf( __( 'LDAP search failed: %s', 'ldap-staff-directory' ), $error )
+		do {
+			$ldap_controls = array(
+				array(
+					'oid'        => LDAP_CONTROL_PAGEDRESULTS,
+					'iscritical' => false,
+					'value'      => array(
+						'size'   => 500,
+						'cookie' => $cookie,
+					),
+				),
 			);
-		}
 
-		$entries = ldap_get_entries( $this->connection, $search );
-		$users   = array();
+			$result = @ldap_search( $this->connection, $base_ou, $filter, $attributes, 0, 0, 0, LDAP_DEREF_NEVER, $ldap_controls ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 
-		for ( $i = 0; $i < $entries['count']; $i++ ) {
-			$entry = $entries[ $i ];
-			$users[] = array(
-				'name'       => $this->get_entry_value( $entry, 'displayname' )
-				                ?? $this->get_entry_value( $entry, 'cn' )
-				                ?? '',
-				'email'      => $this->get_entry_value( $entry, 'mail' ) ?? '',
-				'title'      => $this->get_entry_value( $entry, 'title' ) ?? '',
-				'department' => $this->get_entry_value( $entry, 'department' ) ?? '',
-				'phone'      => $this->get_entry_value( $entry, 'telephonenumber' ) ?? '',
-			);
-		}
+			if ( ! $result ) {
+				// On first-page failure return WP_Error (same as pre-pagination behavior).
+				// On subsequent pages, stop and return users gathered so far.
+				if ( empty( $users ) ) {
+					$error = ldap_error( $this->connection );
+					return new \WP_Error(
+						'ldap_search_failed',
+						/* translators: %s: LDAP error message */
+						sprintf( __( 'LDAP search failed: %s', 'ldap-staff-directory' ), $error )
+					);
+				}
+				break;
+			}
+
+			$entries = ldap_get_entries( $this->connection, $result );
+
+			// Guard: stop if server returns an empty page (avoids infinite loop on broken cookies).
+			if ( 0 === $entries['count'] ) {
+				ldap_free_result( $result );
+				break;
+			}
+
+			for ( $i = 0; $i < $entries['count']; $i++ ) {
+				$entry   = $entries[ $i ];
+				$users[] = array(
+					'name'       => $this->get_entry_value( $entry, 'displayname' )
+					                ?? $this->get_entry_value( $entry, 'cn' )
+					                ?? '',
+					'email'      => $this->get_entry_value( $entry, 'mail' ) ?? '',
+					'title'      => $this->get_entry_value( $entry, 'title' ) ?? '',
+					'department' => $this->get_entry_value( $entry, 'department' ) ?? '',
+					'phone'      => $this->get_entry_value( $entry, 'telephonenumber' ) ?? '',
+				);
+			}
+
+			$errcode           = null;
+			$matcheddn         = null;
+			$errmsg            = null;
+			$referrals         = null;
+			$response_controls = array();
+			ldap_parse_result( $this->connection, $result, $errcode, $matcheddn, $errmsg, $referrals, $response_controls );
+			$cookie = $response_controls[ LDAP_CONTROL_PAGEDRESULTS ]['value']['cookie'] ?? '';
+
+			ldap_free_result( $result );
+		} while ( '' !== $cookie );
 
 		// Sort alphabetically by name.
 		usort( $users, function ( $a, $b ) {
@@ -219,8 +254,7 @@ class LDAP_ED_Connector {
 	private function disconnect() {
 		if ( $this->connection ) {
 			// ldap_unbind() is the correct close function.
-			// phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-			@ldap_unbind( $this->connection );
+			@ldap_unbind( $this->connection ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 			$this->connection = false;
 		}
 	}

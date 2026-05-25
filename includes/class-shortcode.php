@@ -77,20 +77,20 @@ class LDAP_ED_Shortcode {
 		);
 
 		// Resolve field list from the shortcode attribute.
-		$allowed_fields = array( 'name', 'email', 'title', 'department', 'phone' );
-		$fields         = array_intersect(
+		$allowed_fields       = array( 'name', 'email', 'title', 'department', 'phone' );
+		$ldap_ed_fields       = array_intersect(
 			array_map( 'trim', explode( ',', $atts['fields'] ) ),
 			$allowed_fields
 		);
 
-		$per_page      = max( 1, absint( $atts['per_page'] ) );
-		$enable_search = filter_var( $atts['search'], FILTER_VALIDATE_BOOLEAN );
+		$ldap_ed_per_page      = max( 1, absint( $atts['per_page'] ) );
+		$ldap_ed_enable_search = filter_var( $atts['search'], FILTER_VALIDATE_BOOLEAN );
 
 		// Read and sanitize query params for server-side filtering and pagination.
-		$query_params = $this->get_query_params();
-		$search_query = $query_params['search'];
-		$current_dept = $query_params['dept'];
-		$current_page = $query_params['page'];
+		$query_params         = $this->get_query_params();
+		$ldap_ed_search_query = $query_params['search'];
+		$ldap_ed_current_dept = $query_params['dept'];
+		$ldap_ed_current_page = $query_params['page'];
 
 		// Retrieve full user list from cache or LDAP.
 		$all_users = $this->get_users( $settings );
@@ -99,22 +99,22 @@ class LDAP_ED_Shortcode {
 		}
 
 		// Extract department list from the full (unfiltered) set for correct chip counts.
-		$departments = $this->extract_departments( $all_users );
-		$all_count   = count( $all_users );
+		$ldap_ed_departments = $this->extract_departments( $all_users );
+		$ldap_ed_all_count   = count( $all_users );
 
 		// Apply department and search filters in PHP.
-		$filtered_users = $this->filter_users( $all_users, $search_query, $current_dept );
+		$filtered_users = $this->filter_users( $all_users, $ldap_ed_search_query, $ldap_ed_current_dept );
 
 		// Paginate the filtered result.
-		$pagination   = $this->paginate_users( $filtered_users, $current_page, $per_page );
-		$users        = $pagination['users'];
-		$total_count  = $pagination['total'];
-		$total_pages  = $pagination['total_pages'];
-		$current_page = $pagination['current_page']; // may be clamped if out of range
+		$pagination            = $this->paginate_users( $filtered_users, $ldap_ed_current_page, $ldap_ed_per_page );
+		$ldap_ed_users         = $pagination['users'];
+		$ldap_ed_total_count   = $pagination['total'];
+		$ldap_ed_total_pages   = $pagination['total_pages'];
+		$ldap_ed_current_page  = $pagination['current_page']; // may be clamped if out of range
 
 		// Build Previous / Next URLs (null when the button should be disabled).
-		$prev_url = $current_page > 1 ? $this->build_nav_url( $current_page - 1 ) : null;
-		$next_url = $current_page < $total_pages ? $this->build_nav_url( $current_page + 1 ) : null;
+		$ldap_ed_prev_url = $ldap_ed_current_page > 1 ? $this->build_nav_url( $ldap_ed_current_page - 1 ) : null;
+		$ldap_ed_next_url = $ldap_ed_current_page < $ldap_ed_total_pages ? $this->build_nav_url( $ldap_ed_current_page + 1 ) : null;
 
 		ob_start();
 		include LDAP_ED_DIR . 'public/views/directory.php';
@@ -130,7 +130,7 @@ class LDAP_ED_Shortcode {
 	 * @return array { page: int, search: string, dept: string }
 	 */
 	private function get_query_params(): array {
-		$page   = max( 1, absint( $_GET['ldap_page'] ?? 1 ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$page   = max( 1, absint( wp_unslash( $_GET['ldap_page'] ?? 1 ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$search = sanitize_text_field( wp_unslash( $_GET['ldap_search'] ?? '' ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$dept   = sanitize_text_field( wp_unslash( $_GET['ldap_dept'] ?? '' ) );   // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		return compact( 'page', 'search', 'dept' );
