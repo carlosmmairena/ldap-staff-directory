@@ -136,6 +136,15 @@ class LDAP_ED_Admin {
 			'ldap_ed_section_display'
 		);
 
+		add_settings_field(
+			'ldap_ed_extension_attr',
+			__( 'Extension Attribute', 'ldap-staff-directory' ),
+			array( $this, 'render_field_extension_attr' ),
+			'ldap-staff-directory',
+			'ldap_ed_section_display',
+			array( 'label_for' => 'ldap_ed_extension_attr' )
+		);
+
 		// --- Cache section ---
 		add_settings_section(
 			'ldap_ed_section_cache',
@@ -167,11 +176,13 @@ class LDAP_ED_Admin {
 		$clean['ca_cert']           = sanitize_text_field( $input['ca_cert'] ?? '' );
 		$clean['exclude_disabled']  = isset( $input['exclude_disabled'] ) ? '1' : '0';
 		$clean['per_page']          = absint( $input['per_page'] ?? 20 );
-		$clean['enable_search'] = isset( $input['enable_search'] ) ? '1' : '0';
-		$clean['cache_ttl']     = absint( $input['cache_ttl'] ?? 60 );
+		$clean['enable_search']     = isset( $input['enable_search'] ) ? '1' : '0';
+		$ext_attr                   = sanitize_text_field( $input['extension_attr'] ?? 'ipPhone' );
+		$clean['extension_attr']    = '' !== $ext_attr ? $ext_attr : 'ipPhone';
+		$clean['cache_ttl']         = absint( $input['cache_ttl'] ?? 60 );
 
 		// Allowed field keys.
-		$allowed_fields  = array( 'name', 'email', 'title', 'department', 'phone' );
+		$allowed_fields  = array( 'name', 'email', 'title', 'department', 'phone', 'extension' );
 		$clean['fields'] = array();
 		if ( ! empty( $input['fields'] ) && is_array( $input['fields'] ) ) {
 			foreach ( $input['fields'] as $field ) {
@@ -386,6 +397,17 @@ class LDAP_ED_Admin {
 		);
 	}
 
+	/** @param array $args Settings field args passed by the Settings API. */
+	public function render_field_extension_attr( $args = array() ) {
+		printf(
+			'<input type="text" id="%1$s" name="%2$s[extension_attr]" value="%3$s" class="regular-text" placeholder="ipPhone"><p class="description">%4$s</p>',
+			esc_attr( $args['label_for'] ),
+			esc_attr( LDAP_ED_OPTION_KEY ),
+			esc_attr( $this->get_option( 'extension_attr', 'ipPhone' ) ),
+			esc_html__( 'LDAP attribute name for telephone extensions (case-insensitive: ipPhone, IPPHONE, and ipphone are equivalent). Used when the Extension field is enabled above.', 'ldap-staff-directory' )
+		);
+	}
+
 	public function render_field_fields() {
 		$saved = $this->get_option( 'fields', array( 'name', 'email', 'title', 'department' ) );
 		$items = array(
@@ -394,6 +416,7 @@ class LDAP_ED_Admin {
 			'title'      => __( 'Job Title', 'ldap-staff-directory' ),
 			'department' => __( 'Department', 'ldap-staff-directory' ),
 			'phone'      => __( 'Phone', 'ldap-staff-directory' ),
+			'extension'  => __( 'Extension', 'ldap-staff-directory' ),
 		);
 		foreach ( $items as $key => $label ) {
 			printf(

@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.1.1
+Stable tag:        1.1.2
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,9 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Ca
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.1.2 =
+* Feature: New "Extension" field for telephone extensions — displays as plain text (no link) alongside the existing phone field. Supports organizations with PBX/telephone exchange systems where extensions are stored in a separate LDAP attribute (e.g. `ipPhone`). The LDAP attribute name is configurable in Display Options (default: `ipPhone`). Works with Active Directory, Samba, OpenLDAP, and custom schemas.
 
 = 1.1.1 =
 * Improvement: LDAP user retrieval now uses RFC 2696 paged results (LDAP_CONTROL_PAGEDRESULTS), allowing the plugin to retrieve all employees from directories with more than 1,000 users — previously, Active Directory's default MaxPageSize limit silently truncated results.

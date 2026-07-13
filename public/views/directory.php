@@ -181,6 +181,10 @@ $ldap_avatar_palette = array(
 					<?php echo esc_html( $ldap_ed_user['phone'] ); ?>
 				</a>
 				<?php endif; ?>
+
+				<?php if ( in_array( 'extension', $ldap_ed_fields, true ) && ! empty( $ldap_ed_user['extension'] ) ) : ?>
+				<span class="ldap-extension"><?php echo esc_html( $ldap_ed_user['extension'] ); ?></span>
+				<?php endif; ?>
 			</article>
 			<?php endforeach; ?>
 		<?php endif; ?>

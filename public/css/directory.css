@@ -263,6 +263,13 @@ a.ldap-dept-chip:hover {
 	opacity: .82;
 }
 
+.ldap-extension {
+	display: block;
+	margin-top: 4px;
+	font-size: .88em;
+	color: var( --ldap-muted-color );
+}
+
 /* ── No-results ─────────────────────────────────────────────────────────── */
 
 .ldap-no-results {

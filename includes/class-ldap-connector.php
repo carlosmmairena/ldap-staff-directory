@@ -138,9 +138,16 @@ class LDAP_ED_Connector {
 			$filter = '(&(objectClass=person)(mail=*))';
 		}
 
-		$attributes = array( 'cn', 'displayname', 'mail', 'title', 'department', 'telephonenumber' );
-		$users      = array();
-		$cookie     = '';
+		$ext_attr     = sanitize_text_field( $this->settings['extension_attr'] ?? 'ipPhone' );
+		if ( '' === $ext_attr ) {
+			$ext_attr = 'ipPhone';
+		}
+		// ldap_get_entries() normalizes all attribute names to lowercase in the returned array,
+		// so the lookup key must be lowercase regardless of what the admin configured.
+		$ext_attr_key = strtolower( $ext_attr );
+		$attributes   = array( 'cn', 'displayname', 'mail', 'title', 'department', 'telephonenumber', $ext_attr );
+		$users        = array();
+		$cookie       = '';
 
 		do {
 			$ldap_controls = array(
@@ -188,6 +195,7 @@ class LDAP_ED_Connector {
 					'title'      => $this->get_entry_value( $entry, 'title' ) ?? '',
 					'department' => $this->get_entry_value( $entry, 'department' ) ?? '',
 					'phone'      => $this->get_entry_value( $entry, 'telephonenumber' ) ?? '',
+					'extension'  => $this->get_entry_value( $entry, $ext_attr_key ) ?? '',
 				);
 			}
 

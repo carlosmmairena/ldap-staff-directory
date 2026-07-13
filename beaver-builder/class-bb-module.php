@@ -37,6 +37,7 @@ FLBuilder::register_module(
 								'title'      => __( 'Job Title', 'ldap-staff-directory' ),
 								'department' => __( 'Department', 'ldap-staff-directory' ),
 								'phone'      => __( 'Phone', 'ldap-staff-directory' ),
+								'extension'  => __( 'Extension', 'ldap-staff-directory' ),
 							),
 						),
 

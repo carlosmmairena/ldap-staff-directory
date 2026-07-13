@@ -77,7 +77,7 @@ class LDAP_ED_Shortcode {
 		);
 
 		// Resolve field list from the shortcode attribute.
-		$allowed_fields       = array( 'name', 'email', 'title', 'department', 'phone' );
+		$allowed_fields       = array( 'name', 'email', 'title', 'department', 'phone', 'extension' );
 		$ldap_ed_fields       = array_intersect(
 			array_map( 'trim', explode( ',', $atts['fields'] ) ),
 			$allowed_fields
@@ -161,7 +161,7 @@ class LDAP_ED_Shortcode {
 				array_filter(
 					$users,
 					static function ( $user ) use ( $search ) {
-						foreach ( array( 'name', 'email', 'title', 'department', 'phone' ) as $field ) {
+						foreach ( array( 'name', 'email', 'title', 'department', 'phone', 'extension' ) as $field ) {
 							if ( false !== stripos( $user[ $field ] ?? '', $search ) ) {
 								return true;
 							}

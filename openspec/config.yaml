@@ -30,6 +30,7 @@ rules:
     - Always include a "Non-goals" section
     - Note cache impact: flush (preserves stale) vs purge (removes both)
     - Mark if change is user-facing (requires version bump)
+    - Always create a git feature branch
   specs:
     - Use Given/When/Then format
     - Note WPCS constraints that affect behavior (escaping, nonces, sanitization)
@@ -44,3 +45,5 @@ rules:
     - For user-facing changes: include task to bump LDAP_ED_VERSION + Stable tag in readme.txt
     - End with a suggested conventional commit message (feat/fix/refactor + scope)
     - Reference specific file paths where relevant
+  archive:
+  - Always make a git merge squash from the feature to main branch
