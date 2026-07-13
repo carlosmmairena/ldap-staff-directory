@@ -404,7 +404,7 @@ class LDAP_ED_Admin {
 			esc_attr( $args['label_for'] ),
 			esc_attr( LDAP_ED_OPTION_KEY ),
 			esc_attr( $this->get_option( 'extension_attr', 'ipPhone' ) ),
-			esc_html__( 'LDAP attribute name for telephone extensions (case-insensitive: ipPhone, IPPHONE, and ipphone are equivalent). Used when the Extension field is enabled above.', 'ldap-staff-directory' )
+			esc_html__( 'LDAP attribute for telephone extensions. Use ipPhone for Active Directory / IP-PBX systems, or enter the attribute name from your own schema (e.g. extensionAttribute1). Case does not matter.', 'ldap-staff-directory' )
 		);
 	}
 
