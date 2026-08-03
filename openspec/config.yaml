@@ -29,7 +29,7 @@ rules:
   proposal:
     - Always include a "Non-goals" section
     - Note cache impact: flush (preserves stale) vs purge (removes both)
-    - Mark if change is user-facing (requires version bump)
+    - Suggest if change is user-facing (requires version bump)
     - Always create a git feature branch
   specs:
     - Use Given/When/Then format
