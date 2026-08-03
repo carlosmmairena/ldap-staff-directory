@@ -1,9 +1,57 @@
 /**
  * LDAP Staff Directory — admin JS
- * Handles: Test Connection + Clear Cache buttons.
+ * Handles: Test Connection, Clear Cache, and Refresh Department List buttons.
  */
 ( function ( $ ) {
 	'use strict';
+
+	/**
+	 * Rebuild the department checklist markup, preserving which departments
+	 * were already checked (by name) so a refresh doesn't silently discard
+	 * exclusions the admin already configured.
+	 *
+	 * @param {Array} departments Array of { name, count }.
+	 */
+	function ldapEdRenderDepartments( departments ) {
+		const $field     = $( '#ldap-ed-departments-field' );
+		const $checklist = $( '#ldap-ed-departments-checklist' );
+		const checkedNames = {};
+
+		$checklist.find( 'input[type="checkbox"]:checked' ).each( function () {
+			checkedNames[ $( this ).val() ] = true;
+		} );
+
+		if ( ! departments.length ) {
+			$field.find( '.description, #ldap-ed-departments-checklist' ).remove();
+			$( '<p class="description"></p>' )
+				.text( ldapEdAdmin.i18n.noDepartmentsFound )
+				.prependTo( $field );
+			return;
+		}
+
+		const $newChecklist = $( '<div id="ldap-ed-departments-checklist" class="ldap-ed-departments-checklist"></div>' );
+
+		departments.forEach( function ( dept ) {
+			const isChecked = !! checkedNames[ dept.name ];
+			const $label  = $( '<label></label>' );
+			const $input  = $( '<input type="checkbox">' ).attr( {
+				name: 'ldap_ed_settings[excluded_departments][]',
+				value: dept.name,
+			} );
+			if ( isChecked ) {
+				$input.prop( 'checked', true );
+			}
+			$label.append( $input ).append( document.createTextNode( ' ' + dept.name + ' (' + dept.count + ')' ) );
+			$newChecklist.append( $label );
+		} );
+
+		if ( $checklist.length ) {
+			$checklist.replaceWith( $newChecklist );
+		} else {
+			$field.find( '.description' ).remove();
+			$newChecklist.insertBefore( $field.find( 'p' ).first() );
+		}
+	}
 
 	$( function () {
 		// ── Test Connection ─────────────────────────────────────────────────
@@ -50,6 +98,45 @@
 			.done( function ( res ) {
 				if ( res.success ) {
 					$result.addClass( 'is-success' ).text( res.data.message ).show();
+				} else {
+					$result.addClass( 'is-error' ).text( res.data.message ).show();
+				}
+			} )
+			.fail( function ( xhr ) {
+				$result.addClass( 'is-error' ).text( 'HTTP ' + xhr.status + ': ' + xhr.statusText ).show();
+			} )
+			.always( function () {
+				$btn.prop( 'disabled', false ).text( labelOrig );
+			} );
+		} );
+
+		// ── Refresh Department List ────────────────────────────────────────
+		$( '#ldap-ed-refresh-departments-btn' ).on( 'click', function () {
+			const $btn      = $( this );
+			const $result   = $( '#ldap-ed-departments-result' );
+			const labelOrig = $btn.text();
+
+			$btn.prop( 'disabled', true ).text( ldapEdAdmin.i18n.loadingDepartments );
+			$result.removeClass( 'is-success is-error' ).hide();
+
+			$.post( ldapEdAdmin.ajaxUrl, {
+				action: 'ldap_ed_get_departments',
+				nonce:  ldapEdAdmin.nonce,
+			} )
+			.done( function ( res ) {
+				if ( res.success ) {
+					ldapEdRenderDepartments( res.data.departments );
+
+					const $noDeptLabel = $( '#ldap-ed-exclude-no-department-label' );
+					if ( $noDeptLabel.length ) {
+						const noDeptCount = res.data.no_department_count;
+						const template    = noDeptCount
+							? ldapEdAdmin.i18n.noDepartmentLabelWithCount.replace( '%d', noDeptCount )
+							: ldapEdAdmin.i18n.noDepartmentLabel;
+						$noDeptLabel.contents().filter( function () {
+							return 3 === this.nodeType;
+						} ).last().replaceWith( ' ' + template );
+					}
 				} else {
 					$result.addClass( 'is-error' ).text( res.data.message ).show();
 				}

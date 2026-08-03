@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.1.2
+Stable tag:        1.1.3
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,11 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Ca
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.1.3 =
+* Feature: Exclude specific departments from the public directory. The settings page can now discover every department value present in LDAP (with employee counts) via a "Refresh department list" button, and the admin can select which ones to hide. Excluded departments are removed at the LDAP query level — their employees are never fetched from the server.
+* Feature: Optionally exclude employees with no department assigned, as a separate control from the department checklist.
+* Feature: Configurable order for the public department filter chips — alphabetical (default) or by employee count, descending.
 
 = 1.1.2 =
 * Feature: New "Extension" field for telephone extensions — displays as plain text (no link) alongside the existing phone field. Supports organizations with PBX/telephone exchange systems where extensions are stored in a separate LDAP attribute (e.g. `ipPhone`). The LDAP attribute name is configurable in Display Options (default: `ipPhone`). Works with Active Directory, Samba, OpenLDAP, and custom schemas.

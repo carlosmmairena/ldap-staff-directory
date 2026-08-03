@@ -3,7 +3,7 @@
  * Plugin Name: LDAP Staff Directory
  * Plugin URI:  https://wordpress.org/plugins/ldap-staff-directory/
  * Description: Connects to LDAPS to display an employee directory from an OU. Supports Elementor, Beaver Builder and a native shortcode.
- * Version:     1.1.2
+ * Version:     1.1.3
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author:      Carlos Mairena
@@ -18,13 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'LDAP_ED_VERSION',     '1.1.2' );
+define( 'LDAP_ED_VERSION',     '1.1.3' );
 define( 'LDAP_ED_FILE',        __FILE__ );
 define( 'LDAP_ED_DIR',         plugin_dir_path( __FILE__ ) );
 define( 'LDAP_ED_URL',         plugin_dir_url( __FILE__ ) );
 define( 'LDAP_ED_OPTION_KEY',  'ldap_ed_settings' );
 define( 'LDAP_ED_CACHE_KEY',   'ldap_ed_users' );
 define( 'LDAP_ED_STALE_KEY',   'ldap_ed_users_stale' );
+define( 'LDAP_ED_KNOWN_DEPARTMENTS_KEY', 'ldap_ed_known_departments' );
 
 // -------------------------------------------------------------------------
 // Sodium crypto helpers — bind password encryption (added 1.0.4)

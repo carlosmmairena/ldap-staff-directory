@@ -78,6 +78,23 @@
 	line-height: 1.5;
 }
 
+/* ── Department exclusion checklist ─────────────────────────────────────── */
+
+.ldap-ed-departments-checklist {
+	max-height: 220px;
+	overflow-y: auto;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 8px 10px;
+	background: #f6f7f7;
+	margin-bottom: 8px;
+}
+
+.ldap-ed-departments-checklist label {
+	display: block;
+	margin-bottom: 4px;
+}
+
 /* ── Result banners ─────────────────────────────────────────────────────── */
 
 .ldap-ed-test-result {

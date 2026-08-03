@@ -99,8 +99,9 @@ class LDAP_ED_Shortcode {
 		}
 
 		// Extract department list from the full (unfiltered) set for correct chip counts.
-		$ldap_ed_departments = $this->extract_departments( $all_users );
-		$ldap_ed_all_count   = count( $all_users );
+		$ldap_ed_department_order = $settings['department_order'] ?? 'alpha';
+		$ldap_ed_departments      = $this->extract_departments( $all_users, $ldap_ed_department_order );
+		$ldap_ed_all_count        = count( $all_users );
 
 		// Apply department and search filters in PHP.
 		$filtered_users = $this->filter_users( $all_users, $ldap_ed_search_query, $ldap_ed_current_dept );
@@ -178,10 +179,11 @@ class LDAP_ED_Shortcode {
 	/**
 	 * Extract unique, non-empty departments from all users with their employee counts.
 	 *
-	 * @param array $all_users Full (unfiltered) user array.
-	 * @return array Associative array [ 'Department Name' => count ] sorted alphabetically.
+	 * @param array  $all_users Full (unfiltered) user array.
+	 * @param string $order     'alpha' (default) or 'count_desc'.
+	 * @return array Associative array [ 'Department Name' => count ].
 	 */
-	private function extract_departments( array $all_users ): array {
+	private function extract_departments( array $all_users, string $order = 'alpha' ): array {
 		$counts = array();
 		foreach ( $all_users as $user ) {
 			$dept = trim( $user['department'] ?? '' );
@@ -193,7 +195,13 @@ class LDAP_ED_Shortcode {
 			}
 			++$counts[ $dept ];
 		}
-		ksort( $counts );
+
+		if ( 'count_desc' === $order ) {
+			arsort( $counts );
+		} else {
+			ksort( $counts );
+		}
+
 		return $counts;
 	}
 

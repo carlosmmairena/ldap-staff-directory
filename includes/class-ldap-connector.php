@@ -24,15 +24,17 @@ class LDAP_ED_Connector {
 	 */
 	public function __construct( array $settings = array() ) {
 		$defaults = array(
-			'server'            => '',
-			'port'              => 636,
-			'bind_dn'           => '',
-			'bind_pass'         => '',
-			'base_ou'           => '',
-			'verify_ssl'        => '1',
-			'ca_cert'           => '',
-			'fields'            => array( 'name', 'email', 'title', 'department' ),
-			'exclude_disabled'  => '0',
+			'server'                => '',
+			'port'                  => 636,
+			'bind_dn'               => '',
+			'bind_pass'             => '',
+			'base_ou'               => '',
+			'verify_ssl'            => '1',
+			'ca_cert'               => '',
+			'fields'                => array( 'name', 'email', 'title', 'department' ),
+			'exclude_disabled'      => '0',
+			'excluded_departments'  => array(),
+			'exclude_no_department' => '0',
 		);
 
 		$this->settings = wp_parse_args( $settings, $defaults );
@@ -116,38 +118,52 @@ class LDAP_ED_Connector {
 	}
 
 	/**
-	 * Search the LDAP directory and return an array of user data.
+	 * Build the LDAP filter for person entries.
 	 *
-	 * Uses RFC 2696 paged results (LDAP_CONTROL_PAGEDRESULTS) to retrieve all
-	 * records regardless of the server's MaxPageSize limit (AD default: 1000).
-	 *
-	 * @return array|\WP_Error
+	 * @param bool $apply_exclusions Whether to include excluded_departments / exclude_no_department
+	 *                                clauses. The department-discovery search (get_departments())
+	 *                                must pass false — otherwise an already-excluded department
+	 *                                could never be found again to be re-included.
+	 * @return string
 	 */
-	public function get_users() {
-		$bind_result = $this->bind();
-		if ( is_wp_error( $bind_result ) ) {
-			return $bind_result;
-		}
+	private function build_person_filter( bool $apply_exclusions ): string {
+		$parts = array( '(objectClass=person)', '(mail=*)' );
 
-		$base_ou = sanitize_text_field( $this->settings['base_ou'] );
-
-		// Optionally exclude disabled Active Directory accounts (userAccountControl bit 1).
 		if ( '1' === (string) $this->settings['exclude_disabled'] ) {
-			$filter = '(&(objectClass=person)(mail=*)(!(userAccountControl:1.2.840.113556.1.4.803:=2)))';
-		} else {
-			$filter = '(&(objectClass=person)(mail=*))';
+			$parts[] = '(!(userAccountControl:1.2.840.113556.1.4.803:=2))';
 		}
 
-		$ext_attr     = sanitize_text_field( $this->settings['extension_attr'] ?? 'ipPhone' );
-		if ( '' === $ext_attr ) {
-			$ext_attr = 'ipPhone';
+		if ( $apply_exclusions ) {
+			if ( '1' === (string) ( $this->settings['exclude_no_department'] ?? '0' ) ) {
+				$parts[] = '(department=*)';
+			}
+
+			foreach ( (array) ( $this->settings['excluded_departments'] ?? array() ) as $excluded_dept ) {
+				$excluded_dept = trim( (string) $excluded_dept );
+				if ( '' === $excluded_dept ) {
+					continue;
+				}
+				$parts[] = '(!(department=' . ldap_escape( $excluded_dept, '', LDAP_ESCAPE_FILTER ) . '))';
+			}
 		}
-		// ldap_get_entries() normalizes all attribute names to lowercase in the returned array,
-		// so the lookup key must be lowercase regardless of what the admin configured.
-		$ext_attr_key = strtolower( $ext_attr );
-		$attributes   = array( 'cn', 'displayname', 'mail', 'title', 'department', 'telephonenumber', $ext_attr );
-		$users        = array();
-		$cookie       = '';
+
+		return '(&' . implode( '', $parts ) . ')';
+	}
+
+	/**
+	 * Run a paginated LDAP search (RFC 2696) and return the combined, flat list of entries.
+	 *
+	 * Uses LDAP_CONTROL_PAGEDRESULTS to retrieve all records regardless of the server's
+	 * MaxPageSize limit (AD default: 1000). Shared by get_users() and get_departments().
+	 *
+	 * @param string $filter     LDAP search filter.
+	 * @param array  $attributes Attributes to request.
+	 * @return array|\WP_Error Flat array of ldap_get_entries() entry arrays.
+	 */
+	private function search_paged( string $filter, array $attributes ) {
+		$base_ou = sanitize_text_field( $this->settings['base_ou'] );
+		$entries = array();
+		$cookie  = '';
 
 		do {
 			$ldap_controls = array(
@@ -165,8 +181,8 @@ class LDAP_ED_Connector {
 
 			if ( ! $result ) {
 				// On first-page failure return WP_Error (same as pre-pagination behavior).
-				// On subsequent pages, stop and return users gathered so far.
-				if ( empty( $users ) ) {
+				// On subsequent pages, stop and return entries gathered so far.
+				if ( empty( $entries ) ) {
 					$error = ldap_error( $this->connection );
 					return new \WP_Error(
 						'ldap_search_failed',
@@ -177,26 +193,16 @@ class LDAP_ED_Connector {
 				break;
 			}
 
-			$entries = ldap_get_entries( $this->connection, $result );
+			$page = ldap_get_entries( $this->connection, $result );
 
 			// Guard: stop if server returns an empty page (avoids infinite loop on broken cookies).
-			if ( 0 === $entries['count'] ) {
+			if ( 0 === $page['count'] ) {
 				ldap_free_result( $result );
 				break;
 			}
 
-			for ( $i = 0; $i < $entries['count']; $i++ ) {
-				$entry   = $entries[ $i ];
-				$users[] = array(
-					'name'       => $this->get_entry_value( $entry, 'displayname' )
-					                ?? $this->get_entry_value( $entry, 'cn' )
-					                ?? '',
-					'email'      => $this->get_entry_value( $entry, 'mail' ) ?? '',
-					'title'      => $this->get_entry_value( $entry, 'title' ) ?? '',
-					'department' => $this->get_entry_value( $entry, 'department' ) ?? '',
-					'phone'      => $this->get_entry_value( $entry, 'telephonenumber' ) ?? '',
-					'extension'  => $this->get_entry_value( $entry, $ext_attr_key ) ?? '',
-				);
+			for ( $i = 0; $i < $page['count']; $i++ ) {
+				$entries[] = $page[ $i ];
 			}
 
 			$errcode           = null;
@@ -210,6 +216,50 @@ class LDAP_ED_Connector {
 			ldap_free_result( $result );
 		} while ( '' !== $cookie );
 
+		return $entries;
+	}
+
+	/**
+	 * Search the LDAP directory and return an array of user data.
+	 *
+	 * @return array|\WP_Error
+	 */
+	public function get_users() {
+		$bind_result = $this->bind();
+		if ( is_wp_error( $bind_result ) ) {
+			return $bind_result;
+		}
+
+		$filter = $this->build_person_filter( true );
+
+		$ext_attr = sanitize_text_field( $this->settings['extension_attr'] ?? 'ipPhone' );
+		if ( '' === $ext_attr ) {
+			$ext_attr = 'ipPhone';
+		}
+		// ldap_get_entries() normalizes all attribute names to lowercase in the returned array,
+		// so the lookup key must be lowercase regardless of what the admin configured.
+		$ext_attr_key = strtolower( $ext_attr );
+		$attributes   = array( 'cn', 'displayname', 'mail', 'title', 'department', 'telephonenumber', $ext_attr );
+
+		$entries = $this->search_paged( $filter, $attributes );
+		if ( is_wp_error( $entries ) ) {
+			return $entries;
+		}
+
+		$users = array();
+		foreach ( $entries as $entry ) {
+			$users[] = array(
+				'name'       => $this->get_entry_value( $entry, 'displayname' )
+				                ?? $this->get_entry_value( $entry, 'cn' )
+				                ?? '',
+				'email'      => $this->get_entry_value( $entry, 'mail' ) ?? '',
+				'title'      => $this->get_entry_value( $entry, 'title' ) ?? '',
+				'department' => $this->get_entry_value( $entry, 'department' ) ?? '',
+				'phone'      => $this->get_entry_value( $entry, 'telephonenumber' ) ?? '',
+				'extension'  => $this->get_entry_value( $entry, $ext_attr_key ) ?? '',
+			);
+		}
+
 		// Sort alphabetically by name.
 		usort( $users, function ( $a, $b ) {
 			return strcmp( $a['name'], $b['name'] );
@@ -217,6 +267,61 @@ class LDAP_ED_Connector {
 
 		$this->disconnect();
 		return $users;
+	}
+
+	/**
+	 * Discover every distinct value of the `department` attribute currently present in LDAP,
+	 * with employee counts, plus a count of employees with no department attribute set.
+	 *
+	 * Unlike get_users(), this NEVER applies excluded_departments / exclude_no_department —
+	 * it is the only way for the admin to re-discover (and later un-exclude) a department
+	 * that is already hidden from the public directory.
+	 *
+	 * @return array|\WP_Error { departments: array<{name, count}>, no_department_count: int }
+	 */
+	public function get_departments() {
+		$bind_result = $this->bind();
+		if ( is_wp_error( $bind_result ) ) {
+			return $bind_result;
+		}
+
+		$filter  = $this->build_person_filter( false );
+		$entries = $this->search_paged( $filter, array( 'department' ) );
+
+		if ( is_wp_error( $entries ) ) {
+			return $entries;
+		}
+
+		$counts              = array();
+		$no_department_count = 0;
+
+		foreach ( $entries as $entry ) {
+			$dept = trim( (string) ( $this->get_entry_value( $entry, 'department' ) ?? '' ) );
+			if ( '' === $dept ) {
+				++$no_department_count;
+				continue;
+			}
+			if ( ! isset( $counts[ $dept ] ) ) {
+				$counts[ $dept ] = 0;
+			}
+			++$counts[ $dept ];
+		}
+
+		ksort( $counts );
+		$this->disconnect();
+
+		$departments = array();
+		foreach ( $counts as $dept_name => $dept_count ) {
+			$departments[] = array(
+				'name'  => $dept_name,
+				'count' => $dept_count,
+			);
+		}
+
+		return array(
+			'departments'         => $departments,
+			'no_department_count' => $no_department_count,
+		);
 	}
 
 	/**

@@ -101,6 +101,24 @@ class LDAP_ED_Admin {
 			'ldap_ed_section_connection'
 		);
 
+		// Multi-checkbox — no label_for.
+		add_settings_field(
+			'ldap_ed_excluded_departments',
+			__( 'Exclude Departments', 'ldap-staff-directory' ),
+			array( $this, 'render_field_excluded_departments' ),
+			'ldap-staff-directory',
+			'ldap_ed_section_connection'
+		);
+
+		// Checkbox — no label_for.
+		add_settings_field(
+			'ldap_ed_exclude_no_department',
+			__( 'Exclude Unassigned Employees', 'ldap-staff-directory' ),
+			array( $this, 'render_field_exclude_no_department' ),
+			'ldap-staff-directory',
+			'ldap_ed_section_connection'
+		);
+
 		// --- Display section ---
 		add_settings_section(
 			'ldap_ed_section_display',
@@ -145,6 +163,15 @@ class LDAP_ED_Admin {
 			array( 'label_for' => 'ldap_ed_extension_attr' )
 		);
 
+		add_settings_field(
+			'ldap_ed_department_order',
+			__( 'Department Order', 'ldap-staff-directory' ),
+			array( $this, 'render_field_department_order' ),
+			'ldap-staff-directory',
+			'ldap_ed_section_display',
+			array( 'label_for' => 'ldap_ed_department_order' )
+		);
+
 		// --- Cache section ---
 		add_settings_section(
 			'ldap_ed_section_cache',
@@ -181,6 +208,26 @@ class LDAP_ED_Admin {
 		$clean['extension_attr']    = '' !== $ext_attr ? $ext_attr : 'ipPhone';
 		$clean['cache_ttl']         = absint( $input['cache_ttl'] ?? 60 );
 
+		// Departments marked for exclusion — dedupe, drop empties.
+		// sanitize_textarea_field() (not sanitize_text_field()) so internal whitespace in a
+		// department name is preserved exactly — this value is used for an exact-match LDAP
+		// filter clause, not just display, and collapsing whitespace could make it stop
+		// matching the real attribute value.
+		$raw_excluded_departments      = ( ! empty( $input['excluded_departments'] ) && is_array( $input['excluded_departments'] ) )
+			? $input['excluded_departments']
+			: array();
+		$clean['excluded_departments'] = array_values(
+			array_unique( array_filter( array_map( 'sanitize_textarea_field', $raw_excluded_departments ), 'strlen' ) )
+		);
+
+		$clean['exclude_no_department'] = isset( $input['exclude_no_department'] ) ? '1' : '0';
+
+		$allowed_department_orders = array( 'alpha', 'count_desc' );
+		$raw_department_order      = sanitize_text_field( $input['department_order'] ?? 'alpha' );
+		$clean['department_order'] = in_array( $raw_department_order, $allowed_department_orders, true )
+			? $raw_department_order
+			: 'alpha';
+
 		// Allowed field keys.
 		$allowed_fields  = array( 'name', 'email', 'title', 'department', 'phone', 'extension' );
 		$clean['fields'] = array();
@@ -197,6 +244,17 @@ class LDAP_ED_Admin {
 		$clean['bind_pass'] = '' !== $plain_pass
 			? ldap_ed_encrypt_pass( $plain_pass )
 			: ( $existing['bind_pass'] ?? '' );
+
+		// If the connection target changed, the known-departments snapshot may no longer
+		// reflect the right server — clear it so the admin must re-discover before excluding.
+		$connection_changed = (
+			( $existing['server'] ?? '' ) !== $clean['server'] ||
+			( $existing['bind_dn'] ?? '' ) !== $clean['bind_dn'] ||
+			( $existing['base_ou'] ?? '' ) !== $clean['base_ou']
+		);
+		if ( $connection_changed ) {
+			delete_option( LDAP_ED_KNOWN_DEPARTMENTS_KEY );
+		}
 
 		// Settings changed — purge both TTL transient and stale option since the
 		// LDAP server or connection parameters may have changed.
@@ -267,9 +325,15 @@ class LDAP_ED_Admin {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( 'ldap_ed_admin_nonce' ),
 				'i18n'    => array(
-					'testing'    => __( 'Testing…', 'ldap-staff-directory' ),
-					'clearing'   => __( 'Clearing…', 'ldap-staff-directory' ),
-					'cacheCleared' => __( 'Cache cleared.', 'ldap-staff-directory' ),
+					'testing'                  => __( 'Testing…', 'ldap-staff-directory' ),
+					'clearing'                 => __( 'Clearing…', 'ldap-staff-directory' ),
+					'cacheCleared'             => __( 'Cache cleared.', 'ldap-staff-directory' ),
+					'loadingDepartments'       => __( 'Loading…', 'ldap-staff-directory' ),
+					'refreshDepartments'       => __( 'Refresh department list', 'ldap-staff-directory' ),
+					'noDepartmentsFound'       => __( 'No departments found in LDAP.', 'ldap-staff-directory' ),
+					/* translators: %d is replaced client-side with the number of employees with no department assigned. */
+					'noDepartmentLabelWithCount' => __( 'Exclude employees with no department assigned (%d)', 'ldap-staff-directory' ),
+					'noDepartmentLabel'        => __( 'Exclude employees with no department assigned', 'ldap-staff-directory' ),
 				),
 			)
 		);
@@ -386,6 +450,70 @@ class LDAP_ED_Admin {
 		);
 	}
 
+	/**
+	 * Checklist of departments discovered from LDAP (snapshot stored in
+	 * LDAP_ED_KNOWN_DEPARTMENTS_KEY) — checked entries are excluded from the public directory.
+	 * The discovery snapshot is refreshed only via the "Refresh department list" AJAX button,
+	 * never automatically, so opening the settings page never triggers an LDAP call.
+	 */
+	public function render_field_excluded_departments() {
+		$known = get_option( LDAP_ED_KNOWN_DEPARTMENTS_KEY, false );
+		$saved = (array) $this->get_option( 'excluded_departments', array() );
+
+		printf( '<div id="ldap-ed-departments-field">' );
+
+		if ( false === $known || empty( $known['departments'] ) ) {
+			printf(
+				'<p class="description">%s</p>',
+				esc_html__( 'No departments loaded yet. Click "Refresh department list" below to discover departments from LDAP.', 'ldap-staff-directory' )
+			);
+		} else {
+			printf( '<div id="ldap-ed-departments-checklist" class="ldap-ed-departments-checklist">' );
+			foreach ( $known['departments'] as $ldap_ed_known_dept ) {
+				// Compare using the same sanitizer applied on save (sanitize_textarea_field —
+				// preserves internal whitespace) so the checkbox state always matches what's
+				// actually stored and used to build the LDAP exclusion filter.
+				$ldap_ed_normalized_name = sanitize_textarea_field( $ldap_ed_known_dept['name'] );
+				printf(
+					'<label><input type="checkbox" name="%1$s[excluded_departments][]" value="%2$s" %3$s> %4$s</label>',
+					esc_attr( LDAP_ED_OPTION_KEY ),
+					esc_attr( $ldap_ed_known_dept['name'] ),
+					checked( in_array( $ldap_ed_normalized_name, $saved, true ), true, false ),
+					esc_html( $ldap_ed_known_dept['name'] . ' (' . absint( $ldap_ed_known_dept['count'] ) . ')' )
+				);
+			}
+			printf( '</div>' );
+		}
+
+		printf(
+			'<p><button type="button" id="ldap-ed-refresh-departments-btn" class="button button-secondary">%s</button></p>',
+			esc_html__( 'Refresh department list', 'ldap-staff-directory' )
+		);
+		printf( '<div id="ldap-ed-departments-result" class="ldap-ed-test-result" aria-live="polite"></div>' );
+		printf( '</div>' );
+	}
+
+	/** Checkbox — separate from the named-department checklist (LDAP can't negate-match an absent attribute). */
+	public function render_field_exclude_no_department() {
+		$known = get_option( LDAP_ED_KNOWN_DEPARTMENTS_KEY, false );
+		$count = ( false !== $known && isset( $known['no_department_count'] ) ) ? absint( $known['no_department_count'] ) : null;
+
+		$label = null === $count
+			? __( 'Exclude employees with no department assigned', 'ldap-staff-directory' )
+			: sprintf(
+				/* translators: %d: number of employees with no department assigned */
+				__( 'Exclude employees with no department assigned (%d)', 'ldap-staff-directory' ),
+				absint( $count )
+			);
+
+		printf(
+			'<label id="ldap-ed-exclude-no-department-label"><input type="checkbox" name="%1$s[exclude_no_department]" value="1" %2$s> %3$s</label>',
+			esc_attr( LDAP_ED_OPTION_KEY ),
+			checked( '1', $this->get_option( 'exclude_no_department', '0' ), false ),
+			esc_html( $label )
+		);
+	}
+
 	/** @param array $args Settings field args passed by the Settings API. */
 	public function render_field_ca_cert( $args = array() ) {
 		printf(
@@ -436,6 +564,33 @@ class LDAP_ED_Admin {
 			esc_attr( $args['label_for'] ),
 			esc_attr( LDAP_ED_OPTION_KEY ),
 			absint( $this->get_option( 'per_page', 20 ) )
+		);
+	}
+
+	/** @param array $args Settings field args passed by the Settings API. */
+	public function render_field_department_order( $args = array() ) {
+		$saved   = $this->get_option( 'department_order', 'alpha' );
+		$options = array(
+			'alpha'      => __( 'Alphabetical (A–Z)', 'ldap-staff-directory' ),
+			'count_desc' => __( 'By contact count (highest first)', 'ldap-staff-directory' ),
+		);
+
+		printf(
+			'<select id="%1$s" name="%2$s[department_order]">',
+			esc_attr( $args['label_for'] ),
+			esc_attr( LDAP_ED_OPTION_KEY )
+		);
+		foreach ( $options as $ldap_ed_order_value => $ldap_ed_order_label ) {
+			printf(
+				'<option value="%1$s" %2$s>%3$s</option>',
+				esc_attr( $ldap_ed_order_value ),
+				selected( $saved, $ldap_ed_order_value, false ),
+				esc_html( $ldap_ed_order_label )
+			);
+		}
+		printf(
+			'</select><p class="description">%s</p>',
+			esc_html__( 'Order of the department filter chips shown to visitors on the public directory.', 'ldap-staff-directory' )
 		);
 	}
 
