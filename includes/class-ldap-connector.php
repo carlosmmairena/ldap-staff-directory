@@ -25,6 +25,7 @@ class LDAP_ED_Connector {
 	public function __construct( array $settings = array() ) {
 		$defaults = array(
 			'server'                => '',
+			'scheme'                => '',
 			'port'                  => 636,
 			'bind_dn'               => '',
 			'bind_pass'             => '',
@@ -46,10 +47,23 @@ class LDAP_ED_Connector {
 	 * @return true|\WP_Error
 	 */
 	public function connect() {
-		$server = sanitize_text_field( $this->settings['server'] );
-		$port   = absint( $this->settings['port'] );
+		// server may still be in the legacy "scheme://domain" format for installs that
+		// haven't resaved settings since the scheme select was introduced — always strip
+		// any embedded prefix so it's never duplicated with the scheme below.
+		$split  = ldap_ed_split_server_scheme( (string) $this->settings['server'] );
+		$domain = sanitize_text_field( $split['domain'] );
 
-		if ( empty( $server ) ) {
+		// Prefer the explicitly saved scheme; otherwise infer it from a legacy prefix so a
+		// working ldap:// install doesn't silently flip to ldaps after upgrading; otherwise
+		// fall back to ldaps.
+		$scheme = (string) ( $this->settings['scheme'] ?? '' );
+		if ( '' === $scheme ) {
+			$scheme = $split['scheme'] ?? 'ldaps';
+		}
+
+		$port = absint( $this->settings['port'] );
+
+		if ( empty( $domain ) ) {
 			return new \WP_Error( 'ldap_no_server', __( 'LDAP server address is not configured.', 'ldap-staff-directory' ) );
 		}
 
@@ -66,7 +80,9 @@ class LDAP_ED_Connector {
 			}
 		}
 
-		$this->connection = @ldap_connect( $server, $port ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		$server_uri = $scheme . '://' . $domain;
+
+		$this->connection = @ldap_connect( $server_uri, $port ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
 
 		if ( ! $this->connection ) {
 			return new \WP_Error( 'ldap_connect_failed', __( 'Could not create LDAP connection handle.', 'ldap-staff-directory' ) );

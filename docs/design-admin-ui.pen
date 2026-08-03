@@ -1,0 +1,1221 @@
+{
+  "version": "2.15",
+  "children": [
+    {
+      "type": "frame",
+      "id": "FnjuJ",
+      "x": 0,
+      "y": 0,
+      "name": "Component/Text Field",
+      "reusable": true,
+      "width": 260,
+      "fill": "$bg-input",
+      "cornerRadius": 4,
+      "stroke": "$border-input",
+      "strokeWidth": 1,
+      "padding": [
+        7,
+        10
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "aRKaJ",
+          "name": "Value",
+          "fill": "$text-body",
+          "content": "Value",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "w2cic",
+      "x": 300,
+      "y": 0,
+      "name": "Component/Select Field",
+      "reusable": true,
+      "width": 180,
+      "fill": "$bg-input",
+      "cornerRadius": 4,
+      "stroke": "$border-input",
+      "strokeWidth": 1,
+      "padding": [
+        7,
+        10
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "lJExU",
+          "name": "Value",
+          "fill": "$text-body",
+          "content": "LDAPS",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "500"
+        },
+        {
+          "type": "icon",
+          "id": "HOgk7",
+          "name": "Chevron",
+          "width": 14,
+          "height": 14,
+          "icon": "chevron-down",
+          "library": "lucide",
+          "fill": "$text-muted"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fOGR9",
+      "x": 560,
+      "y": 0,
+      "name": "Component/Password Field",
+      "reusable": true,
+      "width": 260,
+      "fill": "$bg-input",
+      "cornerRadius": 4,
+      "stroke": "$border-input",
+      "strokeWidth": 1,
+      "padding": [
+        7,
+        10
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Kj5Ao",
+          "name": "Value",
+          "fill": "$text-body",
+          "content": "••••••••••",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "normal",
+          "letterSpacing": 1
+        },
+        {
+          "type": "icon",
+          "id": "q14Gz",
+          "name": "Eye",
+          "width": 16,
+          "height": 16,
+          "icon": "eye",
+          "library": "lucide",
+          "fill": "$text-muted"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "dVXUK",
+      "x": 0,
+      "y": 110,
+      "name": "Admin Settings Mockup",
+      "clip": true,
+      "width": 1160,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "gap": 28,
+      "padding": 40,
+      "children": [
+        {
+          "type": "text",
+          "id": "fUvfM",
+          "name": "Breadcrumb",
+          "fill": "$text-muted",
+          "content": "Settings  /  LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "cXLBp",
+          "name": "Title",
+          "fill": "$text-heading",
+          "content": "LDAP Connection",
+          "fontFamily": "Inter",
+          "fontSize": 21,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "o5ip2M",
+          "name": "Intro",
+          "fill": "$text-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Mockup: selector de esquema LDAP/LDAPS (arriba), puerto con placeholder dinamico, y toggle de visibilidad de contrasena. El campo Server solo acepta el dominio — el esquema ya no vive en ese texto.",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "GlMX0",
+          "name": "State Comparison",
+          "width": "fill_container",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "BSEQr",
+              "name": "Estado: LDAPS (por defecto) Panel",
+              "width": 340,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Vqw9f",
+                  "name": "Tag",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zz1uT",
+                      "name": "Tag Label",
+                      "fill": "$accent",
+                      "content": "Estado: LDAPS (por defecto)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "J6SJ6F",
+                  "name": "Card",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": 6,
+                  "stroke": "$border-divider",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": [
+                    4,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "rlwNU",
+                      "name": "Scheme Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "t84pq8",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Scheme",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Kw1Xx",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "XcGA2",
+                              "type": "ref",
+                              "ref": "w2cic",
+                              "name": "select instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "lJExU": {
+                                  "content": "LDAPS"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UMncw",
+                      "name": "Server Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MBLlZ",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Server",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "F7Hpyx",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "baOvN",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "directory.example.com",
+                                  "fill": "$text-body"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "B8bbE",
+                      "name": "Port Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CcCDX",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Port",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ILn5c",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "eKa9M",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "636",
+                                  "fill": "$text-placeholder"
+                                }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "JJbXj",
+                              "name": "Caption",
+                              "fill": "$text-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Placeholder — se actualiza si cambias el esquema",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "K7IfhM",
+              "name": "Estado: LDAP Panel",
+              "width": 340,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gbwJH",
+                  "name": "Tag",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w8YkY",
+                      "name": "Tag Label",
+                      "fill": "$accent",
+                      "content": "Estado: LDAP",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "i9fia",
+                  "name": "Card",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": 6,
+                  "stroke": "$border-divider",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": [
+                    4,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "hzcgO",
+                      "name": "Scheme Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Yn6wQ",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Scheme",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "YJ5tM",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "l7fwsx",
+                              "type": "ref",
+                              "ref": "w2cic",
+                              "name": "select instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "lJExU": {
+                                  "content": "LDAP"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TOX0N",
+                      "name": "Server Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DbVMe",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Server",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "VehIu",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "lmgcp",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "directory.example.com",
+                                  "fill": "$text-body"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bD1sM",
+                      "name": "Port Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "U1nDTZ",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Port",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "h3YUL",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "f5IqIG",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "389",
+                                  "fill": "$text-placeholder"
+                                }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "xMazo",
+                              "name": "Caption",
+                              "fill": "$text-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Placeholder — se actualiza si cambias el esquema",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uJME4",
+              "name": "Estado: puerto personalizado Panel",
+              "width": 340,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tlIbo",
+                  "name": "Tag",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U8ri9",
+                      "name": "Tag Label",
+                      "fill": "$accent",
+                      "content": "Estado: puerto personalizado",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HuGgB",
+                  "name": "Card",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": 6,
+                  "stroke": "$border-divider",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": [
+                    4,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "C4eWGn",
+                      "name": "Scheme Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QUXVh",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Scheme",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "C6ASaR",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "Whj1j",
+                              "type": "ref",
+                              "ref": "w2cic",
+                              "name": "select instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "lJExU": {
+                                  "content": "LDAPS"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "h9uOtF",
+                      "name": "Server Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NS8rq",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Server",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "b1AMB",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "d1R85l",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "directory.example.com",
+                                  "fill": "$text-body"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ghXtU",
+                      "name": "Port Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dsEM0",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Port",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "J1yDo5",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "ZGkLP",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "x": 0,
+                              "y": 0,
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "3269",
+                                  "fill": "$text-body"
+                                }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "K5gnDa",
+                              "name": "Caption",
+                              "fill": "$text-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Valor explicito — el switch ya no lo toca",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "f0ZyTU",
+          "name": "Subtitle",
+          "fill": "$text-heading",
+          "content": "Bind Password",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "oFBz5",
+          "name": "Password Comparison",
+          "width": "fill_container",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "N9F4D",
+              "name": "Estado: oculta (por defecto) Panel",
+              "width": 340,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Hf2qB",
+                  "name": "Tag",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "H0GPY",
+                      "name": "Tag Label",
+                      "fill": "$accent",
+                      "content": "Estado: oculta (por defecto)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "m0k7f2",
+                  "name": "Card",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": 6,
+                  "stroke": "$border-divider",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": [
+                    4,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "WzdnZ",
+                      "name": "Bind DN Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "o91mbB",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Bind DN",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RtU79",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "wsv9v",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "cn=admin,dc=example,dc=com"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "b9t5Hc",
+                      "name": "Password Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "NzPVO",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Password",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "DWv55",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "ACTKn",
+                              "type": "ref",
+                              "ref": "fOGR9",
+                              "name": "password instance",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Kj5Ao": {
+                                  "content": "••••••••••",
+                                  "letterSpacing": 1
+                                },
+                                "q14Gz": {
+                                  "icon": "eye"
+                                }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "Q7Iinh",
+                              "name": "Caption",
+                              "fill": "$text-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Clic en el ojo para revelar mientras se edita",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wydKs",
+              "name": "Estado: visible Panel",
+              "width": 340,
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mHT3i",
+                  "name": "Tag",
+                  "fill": "$accent-soft",
+                  "cornerRadius": 4,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X8RnAa",
+                      "name": "Tag Label",
+                      "fill": "$accent",
+                      "content": "Estado: visible",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "f58Sz",
+                  "name": "Card",
+                  "width": "fill_container",
+                  "fill": "$bg-input",
+                  "cornerRadius": 6,
+                  "stroke": "$border-divider",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "padding": [
+                    4,
+                    18
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "GKdzO",
+                      "name": "Bind DN Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "z5Osfc",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Bind DN",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "teNuJ",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "L0uyxy",
+                              "type": "ref",
+                              "ref": "FnjuJ",
+                              "name": "text instance",
+                              "width": "fill_container",
+                              "descendants": {
+                                "aRKaJ": {
+                                  "content": "cn=admin,dc=example,dc=com"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "qat4P",
+                      "name": "Password Row",
+                      "width": "fill_container",
+                      "stroke": "$border-divider",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "gap": 12,
+                      "padding": [
+                        14,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "i7VVR5",
+                          "name": "Label",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": 64,
+                          "content": "Password",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "p7jFKN",
+                          "name": "Field Col",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 5,
+                          "children": [
+                            {
+                              "id": "qmhyG",
+                              "type": "ref",
+                              "ref": "fOGR9",
+                              "name": "password instance",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Kj5Ao": {
+                                  "content": "MiClaveSegura123",
+                                  "letterSpacing": 0
+                                },
+                                "q14Gz": {
+                                  "icon": "eye-off"
+                                }
+                              }
+                            },
+                            {
+                              "type": "text",
+                              "id": "kEtNJ",
+                              "name": "Caption",
+                              "fill": "$text-muted",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Clic en el ojo para volver a ocultar",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "bg-page": {
+      "type": "color",
+      "value": "#F0F0F1"
+    },
+    "bg-input": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "border-input": {
+      "type": "color",
+      "value": "#8C8F94"
+    },
+    "border-divider": {
+      "type": "color",
+      "value": "#DCDCDE"
+    },
+    "text-heading": {
+      "type": "color",
+      "value": "#1D2327"
+    },
+    "text-body": {
+      "type": "color",
+      "value": "#3C434A"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#646970"
+    },
+    "text-placeholder": {
+      "type": "color",
+      "value": "#A7AAAD"
+    },
+    "accent": {
+      "type": "color",
+      "value": "#0073AA"
+    },
+    "accent-soft": {
+      "type": "color",
+      "value": "#F0F6FA"
+    }
+  },
+  "fileToken": "35885bc5-3510-433b-809f-5b51677b4a7f"
+}

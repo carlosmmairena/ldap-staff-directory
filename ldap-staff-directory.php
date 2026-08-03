@@ -3,7 +3,7 @@
  * Plugin Name: LDAP Staff Directory
  * Plugin URI:  https://wordpress.org/plugins/ldap-staff-directory/
  * Description: Connects to LDAPS to display an employee directory from an OU. Supports Elementor, Beaver Builder and a native shortcode.
- * Version:     1.1.3
+ * Version:     1.1.4
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author:      Carlos Mairena
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'LDAP_ED_VERSION',     '1.1.3' );
+define( 'LDAP_ED_VERSION',     '1.1.4' );
 define( 'LDAP_ED_FILE',        __FILE__ );
 define( 'LDAP_ED_DIR',         plugin_dir_path( __FILE__ ) );
 define( 'LDAP_ED_URL',         plugin_dir_url( __FILE__ ) );
@@ -107,6 +107,35 @@ function ldap_ed_decrypt_pass( string $stored ): string {
 function ldap_ed_salts_have_changed(): bool {
 	$stored = get_option( 'ldap_ed_salt_fingerprint', '' );
 	return '' !== $stored && ! hash_equals( $stored, hash( 'sha256', wp_salt( 'auth' ) ) );
+}
+
+/**
+ * Splits a possibly scheme-prefixed LDAP server value into its scheme and domain parts.
+ *
+ * Legacy installs store `server` with the scheme embedded (e.g. "ldaps://host.com").
+ * Strips a recognized ldap://, ldaps://, http://, or https:// prefix so callers always
+ * get a clean domain. The returned scheme is null unless the prefix was ldap or ldaps —
+ * this lets callers infer a default scheme from a legacy value without silently flipping
+ * a working ldap:// install to ldaps just because an http(s) URL was pasted by mistake.
+ *
+ * @param string $raw_server Raw stored/submitted server value.
+ * @return array{scheme:string|null,domain:string}
+ */
+function ldap_ed_split_server_scheme( string $raw_server ): array {
+	$value = trim( $raw_server );
+
+	if ( preg_match( '#^(ldaps?|https?)://#i', $value, $matches ) ) {
+		$prefix = strtolower( $matches[1] );
+		return array(
+			'scheme' => in_array( $prefix, array( 'ldap', 'ldaps' ), true ) ? $prefix : null,
+			'domain' => substr( $value, strlen( $matches[0] ) ),
+		);
+	}
+
+	return array(
+		'scheme' => null,
+		'domain' => $value,
+	);
 }
 
 /**

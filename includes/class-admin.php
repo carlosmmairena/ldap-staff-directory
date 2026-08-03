@@ -62,9 +62,18 @@ class LDAP_ED_Admin {
 			'ldap-staff-directory'
 		);
 
+		add_settings_field(
+			'ldap_ed_scheme',
+			__( 'Scheme', 'ldap-staff-directory' ),
+			array( $this, 'render_field_scheme' ),
+			'ldap-staff-directory',
+			'ldap_ed_section_connection',
+			array( 'label_for' => 'ldap_ed_scheme' )
+		);
+
 		// Text/number fields get label_for so the <th> label links to the input.
 		$connection_text_fields = array(
-			'server'    => __( 'LDAPS Server', 'ldap-staff-directory' ),
+			'server'    => __( 'Server', 'ldap-staff-directory' ),
 			'port'      => __( 'Port', 'ldap-staff-directory' ),
 			'bind_dn'   => __( 'Bind DN', 'ldap-staff-directory' ),
 			'bind_pass' => __( 'Bind Password', 'ldap-staff-directory' ),
@@ -195,8 +204,21 @@ class LDAP_ED_Admin {
 		$clean    = array();
 		$existing = get_option( LDAP_ED_OPTION_KEY, array() );
 
-		$clean['server']        = $this->sanitize_ldap_server( $input['server'] ?? '', $existing['server'] ?? '' );
-		$clean['port']          = absint( $input['port'] ?? 636 );
+		$allowed_schemes = array( 'ldap', 'ldaps' );
+		$raw_scheme      = sanitize_text_field( $input['scheme'] ?? 'ldaps' );
+		$clean['scheme'] = in_array( $raw_scheme, $allowed_schemes, true ) ? $raw_scheme : 'ldaps';
+
+		// Server is domain-only going forward — strip any scheme prefix the admin may have
+		// pasted out of habit (the field itself no longer shows or expects one).
+		$server_split    = ldap_ed_split_server_scheme( $input['server'] ?? '' );
+		$clean['server'] = sanitize_text_field( $server_split['domain'] );
+
+		// An empty port means "use the default for the chosen scheme" — absint('') would
+		// otherwise save 0 and break every connection.
+		$raw_port      = trim( (string) ( $input['port'] ?? '' ) );
+		$default_port  = 'ldap' === $clean['scheme'] ? 389 : 636;
+		$clean['port'] = '' === $raw_port ? $default_port : absint( $raw_port );
+
 		$clean['bind_dn']       = sanitize_text_field( $input['bind_dn'] ?? '' );
 		$clean['base_ou']       = sanitize_text_field( $input['base_ou'] ?? '' );
 		$clean['verify_ssl']        = isset( $input['verify_ssl'] ) ? '1' : '0';
@@ -247,8 +269,11 @@ class LDAP_ED_Admin {
 
 		// If the connection target changed, the known-departments snapshot may no longer
 		// reflect the right server — clear it so the admin must re-discover before excluding.
+		// Compare domains (not the raw stored value) so a legacy "scheme://host" value being
+		// normalized to "host" on this same save isn't mistaken for an actual server change.
+		$existing_domain    = ldap_ed_split_server_scheme( $existing['server'] ?? '' )['domain'];
 		$connection_changed = (
-			( $existing['server'] ?? '' ) !== $clean['server'] ||
+			$existing_domain !== $clean['server'] ||
 			( $existing['bind_dn'] ?? '' ) !== $clean['bind_dn'] ||
 			( $existing['base_ou'] ?? '' ) !== $clean['base_ou']
 		);
@@ -261,40 +286,6 @@ class LDAP_ED_Admin {
 		( new LDAP_ED_Cache() )->purge();
 
 		return $clean;
-	}
-
-	/**
-	 * Sanitize the LDAP server URL, allowing only ldap:// and ldaps:// schemes.
-	 *
-	 * @param string $raw      Raw submitted value.
-	 * @param string $previous Previously saved value (fallback on invalid scheme).
-	 * @return string
-	 */
-	private function sanitize_ldap_server( $raw, $previous ) {
-		$value = trim( $raw );
-
-		if ( '' === $value ) {
-			return '';
-		}
-
-		if ( preg_match( '#^(ldaps?)://#i', $value, $matches ) ) {
-			$scheme    = strtolower( $matches[1] );
-			$remainder = substr( $value, strlen( $matches[0] ) );
-			return $scheme . '://' . sanitize_text_field( $remainder );
-		}
-
-		add_settings_error(
-			LDAP_ED_OPTION_KEY,
-			'ldap_ed_invalid_server_scheme',
-			sprintf(
-				/* translators: %s: the submitted LDAP server URL */
-				__( 'Invalid LDAP server URL "%s". The URL must begin with ldap:// or ldaps://. The previous value has been kept.', 'ldap-staff-directory' ),
-				esc_html( $value )
-			),
-			'error'
-		);
-
-		return $previous;
 	}
 
 	/** Enqueue admin CSS and JS only on the plugin settings page. */
@@ -334,6 +325,8 @@ class LDAP_ED_Admin {
 					/* translators: %d is replaced client-side with the number of employees with no department assigned. */
 					'noDepartmentLabelWithCount' => __( 'Exclude employees with no department assigned (%d)', 'ldap-staff-directory' ),
 					'noDepartmentLabel'        => __( 'Exclude employees with no department assigned', 'ldap-staff-directory' ),
+					'showPassword'             => __( 'Show password', 'ldap-staff-directory' ),
+					'hidePassword'             => __( 'Hide password', 'ldap-staff-directory' ),
 				),
 			)
 		);
@@ -356,23 +349,67 @@ class LDAP_ED_Admin {
 		return $settings[ $key ] ?? $default;
 	}
 
+	/**
+	 * The scheme to show as selected: the explicitly saved value, else inferred from a
+	 * legacy scheme prefix still embedded in `server`, else 'ldaps'. Shared by the scheme
+	 * select and the port placeholder so they always agree on which default port applies.
+	 */
+	private function get_effective_scheme(): string {
+		$saved = (string) $this->get_option( 'scheme', '' );
+		if ( '' !== $saved ) {
+			return $saved;
+		}
+		$split = ldap_ed_split_server_scheme( (string) $this->get_option( 'server', '' ) );
+		return $split['scheme'] ?? 'ldaps';
+	}
+
+	/** @param array $args Settings field args passed by the Settings API. */
+	public function render_field_scheme( $args = array() ) {
+		$current = $this->get_effective_scheme();
+		$options = array(
+			'ldap'  => __( 'LDAP', 'ldap-staff-directory' ),
+			'ldaps' => __( 'LDAPS', 'ldap-staff-directory' ),
+		);
+
+		printf(
+			'<select id="%1$s" name="%2$s[scheme]">',
+			esc_attr( $args['label_for'] ),
+			esc_attr( LDAP_ED_OPTION_KEY )
+		);
+		foreach ( $options as $ldap_ed_scheme_value => $ldap_ed_scheme_label ) {
+			printf(
+				'<option value="%1$s" %2$s>%3$s</option>',
+				esc_attr( $ldap_ed_scheme_value ),
+				selected( $current, $ldap_ed_scheme_value, false ),
+				esc_html( $ldap_ed_scheme_label )
+			);
+		}
+		printf( '</select>' );
+	}
+
 	/** @param array $args Settings field args passed by the Settings API. */
 	public function render_field_server( $args = array() ) {
+		$split = ldap_ed_split_server_scheme( (string) $this->get_option( 'server', '' ) );
 		printf(
-			'<input type="text" id="%1$s" name="%2$s[server]" value="%3$s" class="regular-text" placeholder="ldaps://directory.example.com">',
+			'<input type="text" id="%1$s" name="%2$s[server]" value="%3$s" class="regular-text" placeholder="directory.example.com">',
 			esc_attr( $args['label_for'] ),
 			esc_attr( LDAP_ED_OPTION_KEY ),
-			esc_attr( $this->get_option( 'server', 'ldaps://' ) )
+			esc_attr( $split['domain'] )
 		);
 	}
 
 	/** @param array $args Settings field args passed by the Settings API. */
 	public function render_field_port( $args = array() ) {
+		$default_port = 'ldap' === $this->get_effective_scheme() ? 389 : 636;
+		$saved_port   = $this->get_option( 'port', '' );
+		$is_default   = '' === $saved_port || in_array( absint( $saved_port ), array( 389, 636 ), true );
+
 		printf(
-			'<input type="number" id="%1$s" name="%2$s[port]" value="%3$s" class="small-text" min="1" max="65535">',
+			'<input type="number" id="%1$s" name="%2$s[port]" value="%3$s" class="small-text" min="1" max="65535" placeholder="%4$d" data-default-ldap="389" data-default-ldaps="636">',
 			esc_attr( $args['label_for'] ),
 			esc_attr( LDAP_ED_OPTION_KEY ),
-			esc_attr( $this->get_option( 'port', 636 ) )
+			$is_default ? '' : esc_attr( absint( $saved_port ) ),
+			absint( $default_port )
 		);
 	}
 
@@ -390,10 +427,11 @@ class LDAP_ED_Admin {
 	public function render_field_bind_pass( $args = array() ) {
 		// Never echo the saved password back into the page.
 		printf(
-			'<input type="password" id="%1$s" name="%2$s[bind_pass]" value="" class="regular-text" autocomplete="new-password" placeholder="%3$s">',
+			'<span class="ldap-ed-password-wrap"><input type="password" id="%1$s" name="%2$s[bind_pass]" value="" class="regular-text" autocomplete="new-password" placeholder="%3$s"><button type="button" class="ldap-ed-password-toggle" data-target="%1$s" aria-pressed="false" aria-label="%4$s"></button></span>',
 			esc_attr( $args['label_for'] ),
 			esc_attr( LDAP_ED_OPTION_KEY ),
-			esc_attr__( '(leave blank to keep current)', 'ldap-staff-directory' )
+			esc_attr__( '(leave blank to keep current)', 'ldap-staff-directory' ),
+			esc_attr__( 'Show password', 'ldap-staff-directory' )
 		);
 	}
 

@@ -110,6 +110,29 @@
 			} );
 		} );
 
+		// ── Scheme → Port placeholder ───────────────────────────────────────
+		// Only ever touches the placeholder, never the actual value — an empty field
+		// keeps showing the right default as a hint, but anything the admin has typed
+		// (including a value that happens to match a default) is never overwritten.
+		$( '#ldap_ed_scheme' ).on( 'change', function () {
+			const $port  = $( '#ldap_ed_port' );
+			const scheme = $( this ).val();
+			const defaultPort = 'ldap' === scheme ? $port.data( 'default-ldap' ) : $port.data( 'default-ldaps' );
+			$port.attr( 'placeholder', defaultPort );
+		} );
+
+		// ── Bind Password show/hide ─────────────────────────────────────────
+		$( '.ldap-ed-password-toggle' ).on( 'click', function () {
+			const $btn      = $( this );
+			const $input    = $( '#' + $btn.data( 'target' ) );
+			const willShow  = ! $btn.hasClass( 'is-visible' );
+
+			$input.attr( 'type', willShow ? 'text' : 'password' );
+			$btn.toggleClass( 'is-visible', willShow );
+			$btn.attr( 'aria-pressed', willShow ? 'true' : 'false' );
+			$btn.attr( 'aria-label', willShow ? ldapEdAdmin.i18n.hidePassword : ldapEdAdmin.i18n.showPassword );
+		} );
+
 		// ── Refresh Department List ────────────────────────────────────────
 		$( '#ldap-ed-refresh-departments-btn' ).on( 'click', function () {
 			const $btn      = $( this );

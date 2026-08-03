@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.1.3
+Stable tag:        1.1.4
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,11 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Ca
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.1.4 =
+* Feature: New LDAP/LDAPS scheme selector in Settings, separate from the server field. Changing it updates the port field's placeholder to the matching default (389/636) without overwriting a port you've already customized.
+* Feature: The Server field now accepts only the domain (no more embedded ldap://ldaps:// prefix). Existing installs migrate automatically — the connection keeps working and the field displays cleanly even before the settings form is resaved.
+* Feature: Show/hide toggle for the Bind Password field, to verify what you're typing before saving. Never exposes a password that's already saved.
 
 = 1.1.3 =
 * Feature: Exclude specific departments from the public directory. The settings page can now discover every department value present in LDAP (with employee counts) via a "Refresh department list" button, and the admin can select which ones to hide. Excluded departments are removed at the LDAP query level — their employees are never fetched from the server.
