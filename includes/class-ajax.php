@@ -17,7 +17,12 @@ class LDAP_ED_Ajax {
 		add_action( 'wp_ajax_ldap_ed_get_departments', array( $this, 'get_departments' ) );
 	}
 
-	/** AJAX: Test LDAP connection with current saved settings. */
+	/**
+	 * AJAX: Test LDAP connection with the Connection tab's current (possibly unsaved) form
+	 * values, not just what's already persisted — the whole point of testing before saving.
+	 * $_POST[LDAP_ED_OPTION_KEY] carries the serialized Connection <form> fields, same shape
+	 * as the $input array sanitize_settings() receives on a real save.
+	 */
 	public function test_connection() {
 		check_ajax_referer( 'ldap_ed_admin_nonce', 'nonce' );
 
@@ -25,7 +30,12 @@ class LDAP_ED_Ajax {
 			wp_send_json_error( array( 'message' => __( 'Unauthorized.', 'ldap-staff-directory' ) ), 403 );
 		}
 
-		$settings  = get_option( LDAP_ED_OPTION_KEY, array() );
+		$existing = get_option( LDAP_ED_OPTION_KEY, array() );
+		$posted   = isset( $_POST[ LDAP_ED_OPTION_KEY ] ) && is_array( $_POST[ LDAP_ED_OPTION_KEY ] )
+			? wp_unslash( $_POST[ LDAP_ED_OPTION_KEY ] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce already verified above via check_ajax_referer(); every value is individually sanitized inside ldap_ed_sanitize_connection_fields().
+			: array();
+
+		$settings  = array_merge( $existing, ldap_ed_sanitize_connection_fields( $posted, $existing ) );
 		$connector = new LDAP_ED_Connector( $settings );
 		$result    = $connector->test_connection();
 

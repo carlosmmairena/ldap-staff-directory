@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.1.4
+Stable tag:        1.2.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,8 @@ Connects to an LDAP or LDAPS server and displays an employee directory from a sp
 * Server-side search and pagination, with configurable items per page
 * Handles directories with 1,000+ users via RFC 2696 paged LDAP results
 * Transient-based cache with configurable TTL, one-click invalidation, and a resilient stale fallback when LDAP is temporarily unreachable
-* Admin panel under **Settings → LDAP Directory**, with the bind password encrypted at rest and a show/hide toggle while editing
+* Guided settings screen under **Settings → LDAP Directory**, split into Connection / Employees / Fields tabs with plain-language help popovers, a collapsible "Advanced settings" section per tab, and a one-click "Copy request for IT" template for gathering connection details from whoever manages your LDAP server — built for administrators without LDAP experience
+* Bind password encrypted at rest, with a show/hide toggle while editing
 * SSL certificate verification toggle (supports self-signed certs)
 * Optional CA certificate file path
 * Multisite compatible (per-site settings)
@@ -56,11 +57,11 @@ Contact your hosting provider and ask them to enable the `php-ldap` (or `php7.x-
 
 = My server uses a self-signed SSL certificate. How do I connect? =
 
-Go to **Settings → LDAP Directory → LDAP Connection** and uncheck **Verify SSL Certificate**. Save, then click **Test Connection**.
+Go to **Settings → LDAP Directory → Connection**, open **Advanced settings**, and uncheck **Verify SSL Certificate**. Save, then click **Test Connection**.
 
 = How do I connect to Active Directory? =
 
-Set **Scheme** to `LDAPS`, **Server** to your domain controller's hostname (e.g. `your-dc.domain.com` — no `ldap://`/`ldaps://` prefix needed), leave **Port** on its default (`636`), and use a service account DN such as `CN=svc-wordpress,OU=ServiceAccounts,DC=domain,DC=com` as **Bind DN**.
+On the **Connection** tab, set **Scheme** to `LDAPS`, **Server** to your domain controller's hostname (e.g. `your-dc.domain.com` — no `ldap://`/`ldaps://` prefix needed), leave **Port** on its default (`636`), and use a service account DN such as `CN=svc-wordpress,OU=ServiceAccounts,DC=domain,DC=com` as **Bind DN**. Not sure what to use? Click **Copy request for IT** on that tab to copy a ready-made message asking your directory administrator for these details.
 
 = Can I show only certain fields? =
 
@@ -69,11 +70,11 @@ Yes. In the admin panel, check or uncheck the fields you want. You can also over
 
 = How do I hide certain departments from the public directory? =
 
-In the admin panel, under **LDAP Connection**, click **Refresh department list** to discover every department present in your directory (with employee counts), then check the ones you want to hide. Excluded departments are filtered at the LDAP query level, so those employees are never fetched from the server — not just hidden client-side. You can also exclude employees with no department assigned, as a separate checkbox.
+In the admin panel, under the **Employees** tab, click **Refresh department list** to discover every department present in your directory (with employee counts), then check the ones you want to hide. Excluded departments are filtered at the LDAP query level, so those employees are never fetched from the server — not just hidden client-side. You can also exclude employees with no department assigned, as a separate checkbox.
 
 = How long is data cached? =
 
-By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Cache** or flush immediately with the **Clear Cache** button.
+By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Fields → Advanced settings**, or flush immediately with the **Clear Cache** button on that same tab.
 
 == Screenshots ==
 
@@ -83,6 +84,15 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Ca
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.2.0 =
+* Feature: Settings page redesigned as 3 independently-saved tabs — Connection, Employees, Fields — so administrators without LDAP experience are guided through only what's relevant, instead of one long technical form.
+* Feature: Plain-language help popovers next to Bind DN, Bind Password, and Base OU, explaining what each value means without assuming LDAP knowledge.
+* Feature: Collapsible "Advanced settings" section on the Connection and Fields tabs, hiding rarely-touched options (SSL verification, CA certificate, cache TTL) behind a single click.
+* Feature: "Copy request for IT" button on the Connection tab — copies a ready-made message listing exactly what to ask whoever manages your LDAP server for.
+* Feature: "Test Connection" now validates whatever is currently typed in the Connection tab, including unsaved changes, instead of only the last-saved settings.
+* Improvement: The WordPress security-key rotation notice now links directly to the Connection tab with the Bind Password field focused.
+* Improvement: "Exclude disabled accounts" moved from Connection to the Employees tab, alongside the other employee-visibility filters. The Extension attribute field now only appears once "Extension" is checked in Fields to Show, instead of always showing under Advanced settings.
 
 = 1.1.4 =
 * Feature: New LDAP/LDAPS scheme selector in Settings, separate from the server field. Changing it updates the port field's placeholder to the matching default (389/636) without overwriting a port you've already customized.

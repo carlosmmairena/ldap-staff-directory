@@ -1173,6 +1173,2036 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "nysn1",
+      "x": 860,
+      "y": 0,
+      "name": "Component/Button Primary",
+      "reusable": true,
+      "fill": "$accent",
+      "cornerRadius": 3,
+      "gap": 6,
+      "padding": [
+        9,
+        16
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "ndTlt",
+          "x": 0,
+          "y": 0,
+          "name": "Icon",
+          "enabled": false,
+          "width": 14,
+          "height": 14,
+          "icon": "refresh-cw",
+          "library": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "LK6hV",
+          "name": "Label",
+          "fill": "#FFFFFF",
+          "content": "Primary Button",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ui6yK",
+      "x": 1120,
+      "y": 0,
+      "name": "Component/Button Secondary",
+      "reusable": true,
+      "fill": "$bg-input",
+      "cornerRadius": 3,
+      "stroke": "$border-input",
+      "strokeWidth": 1,
+      "gap": 6,
+      "padding": [
+        8,
+        15
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "Z5ETP",
+          "x": 0,
+          "y": 0,
+          "name": "Icon",
+          "enabled": false,
+          "width": 14,
+          "height": 14,
+          "icon": "refresh-cw",
+          "library": "lucide",
+          "fill": "$text-muted"
+        },
+        {
+          "type": "text",
+          "id": "hfZBI",
+          "name": "Label",
+          "fill": "$text-body",
+          "content": "Secondary Button",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "NXPVd",
+      "x": 1380,
+      "y": 0,
+      "name": "Component/Checkbox",
+      "reusable": true,
+      "gap": 8,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "DWGR7",
+          "name": "Box",
+          "width": 14,
+          "height": 14,
+          "fill": "$bg-input",
+          "cornerRadius": 3,
+          "stroke": "$border-input",
+          "strokeWidth": 1,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "BmsCh",
+              "x": 0,
+              "y": 0,
+              "name": "Check",
+              "enabled": false,
+              "width": 10,
+              "height": 10,
+              "icon": "check",
+              "library": "lucide",
+              "fill": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "iB9Z4",
+          "name": "Label",
+          "fill": "$text-body",
+          "content": "Checkbox label",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OpNVL",
+      "x": 860,
+      "y": 70,
+      "name": "Component/Tab Item",
+      "reusable": true,
+      "layout": "vertical",
+      "padding": [
+        0,
+        4,
+        12,
+        4
+      ],
+      "children": [
+        {
+          "type": "text",
+          "id": "eF8QN",
+          "name": "Label",
+          "fill": "$text-muted",
+          "content": "Tab",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "I3cOw",
+      "x": 1120,
+      "y": 70,
+      "name": "Component/Accordion Header",
+      "reusable": true,
+      "width": 280,
+      "stroke": "$border-divider",
+      "strokeWidth": {
+        "top": 1
+      },
+      "padding": [
+        12,
+        0
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "y11Z4",
+          "name": "Label",
+          "fill": "$text-heading",
+          "content": "Configuración avanzada",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600"
+        },
+        {
+          "type": "icon",
+          "id": "x6DsNE",
+          "name": "Chevron",
+          "width": 14,
+          "height": 14,
+          "icon": "chevron-down",
+          "library": "lucide",
+          "fill": "$text-muted"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LMWLI",
+      "x": 1420,
+      "y": 70,
+      "name": "Component/Result Banner Success",
+      "reusable": true,
+      "fill": "$success-soft",
+      "cornerRadius": 4,
+      "stroke": "$success",
+      "strokeWidth": 1,
+      "gap": 8,
+      "padding": [
+        10,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "Fwxkj",
+          "name": "Icon",
+          "width": 16,
+          "height": 16,
+          "icon": "circle-check",
+          "library": "lucide",
+          "fill": "$success"
+        },
+        {
+          "type": "text",
+          "id": "mV0QC",
+          "name": "Message",
+          "fill": "$success-text",
+          "content": "Conexión exitosa. Se encontraron 214 usuarios.",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "V5g1eC",
+      "x": 860,
+      "y": 150,
+      "name": "Component/Help Popover",
+      "reusable": true,
+      "width": 230,
+      "fill": "$bg-input",
+      "cornerRadius": 6,
+      "stroke": "$border-divider",
+      "strokeWidth": 1,
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000026",
+        "offset": {
+          "x": 0,
+          "y": 2
+        },
+        "blur": 10
+      },
+      "layout": "vertical",
+      "gap": 5,
+      "padding": 12,
+      "children": [
+        {
+          "type": "text",
+          "id": "k13jRH",
+          "name": "Title",
+          "fill": "$text-heading",
+          "content": "¿Qué es esto?",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "nuBEd",
+          "name": "Body",
+          "fill": "$text-body",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Explicación en lenguaje simple.",
+          "lineHeight": 1.4,
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "tZjqK",
+      "x": 0,
+      "y": 879,
+      "name": "Paso 1 — Conexión",
+      "clip": true,
+      "width": 1160,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "children": [
+        {
+          "type": "text",
+          "id": "t1t6O",
+          "name": "Breadcrumb",
+          "fill": "$text-muted",
+          "content": "Settings  /  LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "z6wsQ",
+          "name": "Title",
+          "fill": "$text-heading",
+          "content": "LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 21,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "HCYAU",
+          "name": "Tab Bar",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 28,
+          "children": [
+            {
+              "id": "Igm6R",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Conectar",
+              "stroke": "$accent",
+              "strokeWidth": {
+                "bottom": 2
+              },
+              "descendants": {
+                "eF8QN": {
+                  "content": "Conexión",
+                  "fill": "$accent",
+                  "fontWeight": "600"
+                }
+              }
+            },
+            {
+              "id": "g6NPYD",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Empleados",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Empleados"
+                }
+              }
+            },
+            {
+              "id": "zpNbk",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Como Mostrarlo",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Campos"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "TRxAU",
+          "name": "Intro",
+          "fill": "$text-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Conectá WordPress al servidor LDAP o Active Directory de tu organización. Estos datos suelen ser provistos por la persona que administra ese servidor, no tenés que conocer LDAP para completarlos.",
+          "lineHeight": 1.5,
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "RKR6v",
+          "name": "Ask IT Callout",
+          "width": "fill_container",
+          "fill": "$accent-soft",
+          "cornerRadius": 6,
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "sJJI8",
+              "name": "Header",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "PCNmw",
+                  "name": "Icon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "info",
+                  "library": "lucide",
+                  "fill": "$accent"
+                },
+                {
+                  "type": "text",
+                  "id": "kiTir",
+                  "name": "Title",
+                  "fill": "$text-heading",
+                  "content": "¿No tenés estos datos a mano?",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "oYbE5",
+              "name": "Body",
+              "fill": "$text-body",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Pedíselos a quien administra el directorio de la organización. Necesitás: la dirección del servidor, un usuario de servicio con su contraseña, y la carpeta (OU) donde están las cuentas de empleados.",
+              "lineHeight": 1.5,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "aOJfl",
+              "type": "ref",
+              "ref": "ui6yK",
+              "name": "Copy Request Button",
+              "descendants": {
+                "Z5ETP": {
+                  "enabled": true,
+                  "icon": "copy"
+                },
+                "hfZBI": {
+                  "content": "Copiar solicitud para TI"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "aoxtm",
+          "name": "Connection Card",
+          "width": "fill_container",
+          "fill": "$bg-input",
+          "cornerRadius": 6,
+          "stroke": "$border-divider",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": [
+            4,
+            18
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ykcSL",
+              "name": "Scheme Row",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "MAZWf",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jOFFm",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Scheme",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "A7twq",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "vH3J6",
+                      "type": "ref",
+                      "ref": "w2cic",
+                      "name": "select instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "lJExU": {
+                          "content": "LDAPS"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "drxKh",
+              "name": "Server Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OsCsZ",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XO11e",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Server",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KEYSe",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "rpiFw",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "directory.example.com"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "aTJOB",
+              "name": "Port Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GwojD",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FD4l4",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Port",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y09WhK",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "MPsRN",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "636",
+                          "fill": "$text-placeholder"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "n7zBOa",
+                      "name": "Caption",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Se completa solo según el esquema elegido arriba.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xN859",
+              "name": "Bind DN Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "VWbfA",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mZBaY",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Bind DN",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "ibCuW",
+                      "name": "Info",
+                      "width": 13,
+                      "height": 13,
+                      "icon": "info",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uNc4C",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "yR5IG",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "cn=admin,dc=example,dc=com"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "t8n2KD",
+                      "name": "Caption",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Es el usuario de servicio que WordPress usa para conectarse — no es tu usuario personal.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NhqgQ",
+              "name": "Bind Password Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "oSc7E",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xSRkq",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Bind Password",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "S9t6c",
+                      "name": "Info",
+                      "width": 13,
+                      "height": 13,
+                      "icon": "info",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XzzMr",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "CPFLv",
+                      "type": "ref",
+                      "ref": "fOGR9",
+                      "name": "password instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "Kj5Ao": {
+                          "content": "••••••••••"
+                        },
+                        "q14Gz": {
+                          "icon": "eye"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "e5dLa",
+                      "name": "Caption",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "La contraseña del usuario de servicio.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KQtEn",
+              "name": "Base OU Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "o5yY5B",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Scm6k",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Base OU",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "Q1cI4",
+                      "name": "Info",
+                      "width": 13,
+                      "height": 13,
+                      "icon": "info",
+                      "library": "lucide",
+                      "fill": "$accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "P1BtqD",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "yA19p",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": "fill_container",
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "ou=empleados,dc=example,dc=com"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "E73f4w",
+                      "name": "Caption",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "La carpeta (unidad organizativa) donde están las cuentas de empleados.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UupVG",
+          "name": "Test Connection Row",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "id": "SbcJX",
+              "type": "ref",
+              "ref": "nysn1",
+              "name": "Test Button",
+              "descendants": {
+                "ndTlt": {
+                  "enabled": true,
+                  "icon": "plug-zap"
+                },
+                "LK6hV": {
+                  "content": "Probar conexión"
+                }
+              }
+            },
+            {
+              "id": "xUBrp",
+              "type": "ref",
+              "ref": "LMWLI",
+              "name": "Test Result"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Cv9sI",
+          "name": "Advanced Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "W9c8z",
+              "type": "ref",
+              "ref": "I3cOw",
+              "name": "Accordion Header",
+              "width": "fill_container",
+              "descendants": {
+                "x6DsNE": {
+                  "icon": "chevron-up"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "kcafQ",
+              "name": "Advanced Body",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "padding": [
+                14,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "id": "Pk0mA",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Verify SSL Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Habilitar verificación de certificado SSL (desactivar para certificados autofirmados)"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "SaJLk",
+                  "name": "CA Cert Row",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "bCC6s",
+                      "name": "Label",
+                      "width": 130,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Caz27",
+                          "name": "Text",
+                          "fill": "$text-heading",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Certificado CA",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "I9lHWC",
+                      "name": "Field Col",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 5,
+                      "children": [
+                        {
+                          "id": "YY9BA",
+                          "type": "ref",
+                          "ref": "FnjuJ",
+                          "name": "text instance",
+                          "width": "fill_container",
+                          "descendants": {
+                            "aRKaJ": {
+                              "content": "/etc/ssl/certs/ca.pem",
+                              "fill": "$text-placeholder"
+                            }
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "id": "RKIbX",
+                          "name": "Caption",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Solo si tu servidor usa un certificado autofirmado.",
+                          "fontFamily": "Inter",
+                          "fontSize": 11,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JG4uO",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            20,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "id": "w9kl0",
+              "type": "ref",
+              "ref": "nysn1",
+              "name": "Save Button",
+              "descendants": {
+                "LK6hV": {
+                  "content": "Guardar conexión"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Pz23y",
+      "x": 0,
+      "y": 2156,
+      "name": "Paso 2 — Empleados",
+      "clip": true,
+      "width": 1160,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "children": [
+        {
+          "type": "text",
+          "id": "rSbRg",
+          "name": "Breadcrumb",
+          "fill": "$text-muted",
+          "content": "Settings  /  LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "wRUt9",
+          "name": "Title",
+          "fill": "$text-heading",
+          "content": "LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 21,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "Mm5ek",
+          "name": "Tab Bar",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 28,
+          "children": [
+            {
+              "id": "uRbFz",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Conectar",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Conexión"
+                }
+              }
+            },
+            {
+              "id": "W6ffOa",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Empleados",
+              "stroke": "$accent",
+              "strokeWidth": {
+                "bottom": 2
+              },
+              "descendants": {
+                "eF8QN": {
+                  "content": "Empleados",
+                  "fill": "$accent",
+                  "fontWeight": "600"
+                }
+              }
+            },
+            {
+              "id": "xdkfm",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Como Mostrarlo",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Campos"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "yQhNB",
+          "name": "Intro",
+          "fill": "$text-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Elegí qué empleados aparecen en el directorio público. Estos filtros se aplican antes de mostrar la lista a los visitantes del sitio.",
+          "lineHeight": 1.5,
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "rmOcD",
+          "name": "Exclude Disabled Card",
+          "width": "fill_container",
+          "fill": "$bg-input",
+          "cornerRadius": 6,
+          "stroke": "$border-divider",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": 16,
+          "children": [
+            {
+              "id": "oszJz",
+              "type": "ref",
+              "ref": "NXPVd",
+              "name": "Exclude Disabled Checkbox",
+              "descendants": {
+                "iB9Z4": {
+                  "content": "Excluir cuentas deshabilitadas"
+                }
+              }
+            },
+            {
+              "type": "text",
+              "id": "tsBxO",
+              "name": "Caption",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Solo aplica a Active Directory. Dejalo sin marcar si tu servidor es OpenLDAP u otro.",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CsWLO",
+          "name": "Departments Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "frame",
+              "id": "DyLSn",
+              "name": "Dept Header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "BSI2u",
+                  "name": "Subtitle",
+                  "fill": "$text-heading",
+                  "content": "Excluir departamentos",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                },
+                {
+                  "id": "zhb6r",
+                  "type": "ref",
+                  "ref": "ui6yK",
+                  "name": "Refresh Button",
+                  "descendants": {
+                    "Z5ETP": {
+                      "enabled": true
+                    },
+                    "hfZBI": {
+                      "content": "Actualizar departamentos"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "wkcXp",
+              "name": "Dept Caption",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Los nombres y cantidades vienen directo de tu servidor LDAP. Marcá los que no querés mostrar.",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "B5HZk",
+              "name": "Departments Checklist",
+              "width": "fill_container",
+              "fill": "#F6F7F7",
+              "cornerRadius": 4,
+              "stroke": "$border-divider",
+              "strokeWidth": 1,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": [
+                10,
+                14
+              ],
+              "children": [
+                {
+                  "id": "iRzj4",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Marketing Checkbox",
+                  "descendants": {
+                    "iB9Z4": {
+                      "content": "Marketing (12)"
+                    }
+                  }
+                },
+                {
+                  "id": "kbsU2",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Tecnología Checkbox",
+                  "descendants": {
+                    "iB9Z4": {
+                      "content": "Tecnología (34)"
+                    }
+                  }
+                },
+                {
+                  "id": "oEtJl",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Ventas Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Ventas (20)"
+                    }
+                  }
+                },
+                {
+                  "id": "AG4kg",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Recursos Humanos Checkbox",
+                  "descendants": {
+                    "iB9Z4": {
+                      "content": "Recursos Humanos (5)"
+                    }
+                  }
+                },
+                {
+                  "id": "LFdwC",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Dirección Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Dirección (3)"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "eENH8",
+          "name": "No Department Card",
+          "width": "fill_container",
+          "fill": "$bg-input",
+          "cornerRadius": 6,
+          "stroke": "$border-divider",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "gap": 6,
+          "padding": 16,
+          "children": [
+            {
+              "id": "Gqblz",
+              "type": "ref",
+              "ref": "NXPVd",
+              "name": "No Department Checkbox",
+              "descendants": {
+                "iB9Z4": {
+                  "content": "Excluir empleados sin departamento asignado (7)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Hx3Iv",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            20,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "id": "rIDlx",
+              "type": "ref",
+              "ref": "nysn1",
+              "name": "Save Button",
+              "descendants": {
+                "LK6hV": {
+                  "content": "Guardar empleados"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ThRaT",
+      "x": 0,
+      "y": 2920,
+      "name": "Paso 3 — Campos",
+      "clip": true,
+      "width": 1160,
+      "fill": "$bg-page",
+      "layout": "vertical",
+      "gap": 24,
+      "padding": 40,
+      "children": [
+        {
+          "type": "text",
+          "id": "LHPJE",
+          "name": "Breadcrumb",
+          "fill": "$text-muted",
+          "content": "Settings  /  LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "eTTZx",
+          "name": "Title",
+          "fill": "$text-heading",
+          "content": "LDAP Staff Directory",
+          "fontFamily": "Inter",
+          "fontSize": 21,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "B0dX2",
+          "name": "Tab Bar",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "gap": 28,
+          "children": [
+            {
+              "id": "AbBYR",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Conectar",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Conexión"
+                }
+              }
+            },
+            {
+              "id": "MPVq0",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Empleados",
+              "descendants": {
+                "eF8QN": {
+                  "content": "Empleados"
+                }
+              }
+            },
+            {
+              "id": "B4w5gB",
+              "type": "ref",
+              "ref": "OpNVL",
+              "name": "Tab Como Mostrarlo",
+              "stroke": "$accent",
+              "strokeWidth": {
+                "bottom": 2
+              },
+              "descendants": {
+                "eF8QN": {
+                  "content": "Campos",
+                  "fill": "$accent",
+                  "fontWeight": "600"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "O1rQUc",
+          "name": "Intro",
+          "fill": "$text-muted",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Elegí qué información se muestra de cada persona y cómo se organiza la lista para tus visitantes.",
+          "lineHeight": 1.5,
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "q1k7VR",
+          "name": "Fields To Show Card",
+          "width": "fill_container",
+          "fill": "$bg-input",
+          "cornerRadius": 6,
+          "stroke": "$border-divider",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "gap": 14,
+          "padding": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "aIvYo",
+              "name": "Section Label",
+              "fill": "$text-heading",
+              "content": "Campos a mostrar",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "XWEQN",
+              "name": "Fields Row",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "q0EGu",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Nombre completo Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Nombre completo"
+                    }
+                  }
+                },
+                {
+                  "id": "X7um5",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Email Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Email"
+                    }
+                  }
+                },
+                {
+                  "id": "HO8AQ",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Puesto Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Puesto"
+                    }
+                  }
+                },
+                {
+                  "id": "LzJEr",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Departamento Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Departamento"
+                    }
+                  }
+                },
+                {
+                  "id": "JYa0I",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Teléfono Checkbox",
+                  "descendants": {
+                    "iB9Z4": {
+                      "content": "Teléfono"
+                    }
+                  }
+                },
+                {
+                  "id": "hwrac",
+                  "type": "ref",
+                  "ref": "NXPVd",
+                  "name": "Extensión Checkbox",
+                  "descendants": {
+                    "DWGR7": {
+                      "fill": "$accent",
+                      "stroke": "$accent"
+                    },
+                    "BmsCh": {
+                      "enabled": true
+                    },
+                    "iB9Z4": {
+                      "content": "Extensión"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "U5RYS",
+              "name": "Extension Attribute Block",
+              "width": "fill_container",
+              "fill": "$accent-soft",
+              "cornerRadius": 4,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kFuCy",
+                  "name": "Ext Label",
+                  "fill": "$text-heading",
+                  "content": "Se muestra porque marcaste \"Extensión\" arriba",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "I2B8p",
+                  "name": "Ext Field Row",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "z0gmx",
+                      "name": "Ext Sub Label",
+                      "fill": "$text-body",
+                      "content": "Atributo LDAP de la extensión:",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "id": "T0dAm",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": 160,
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "ipPhone"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "W5Sp1",
+                  "name": "Ext Caption",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Usá ipPhone para Active Directory, o el nombre del atributo si tu servidor usa otro esquema. Si no sabés cuál es, pedíselo a quien administra el LDAP.",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fEQeA",
+          "name": "Display Card",
+          "width": "fill_container",
+          "fill": "$bg-input",
+          "cornerRadius": 6,
+          "stroke": "$border-divider",
+          "strokeWidth": 1,
+          "layout": "vertical",
+          "padding": [
+            4,
+            18
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nNgOJ",
+              "name": "Por página Row",
+              "width": "fill_container",
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ybAdj",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HftVk",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Por página",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MK15e",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "Q8Mjn",
+                      "type": "ref",
+                      "ref": "FnjuJ",
+                      "name": "text instance",
+                      "width": 120,
+                      "descendants": {
+                        "aRKaJ": {
+                          "content": "20"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FFED6",
+              "name": "Búsqueda Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RCBfB",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tHhO2",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Búsqueda",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rapYv",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "NX2bH",
+                      "type": "ref",
+                      "ref": "NXPVd",
+                      "name": "Search Checkbox",
+                      "descendants": {
+                        "DWGR7": {
+                          "fill": "$accent",
+                          "stroke": "$accent"
+                        },
+                        "BmsCh": {
+                          "enabled": true
+                        },
+                        "iB9Z4": {
+                          "content": "Mostrar barra de búsqueda arriba del directorio"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "psT2e",
+              "name": "Orden Row",
+              "width": "fill_container",
+              "stroke": "$border-divider",
+              "strokeWidth": {
+                "top": 1
+              },
+              "gap": 12,
+              "padding": [
+                14,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "T4jPy",
+                  "name": "Label",
+                  "width": 130,
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Uticf",
+                      "name": "Text",
+                      "fill": "$text-heading",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Orden",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fbSCk",
+                  "name": "Field Col",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 5,
+                  "children": [
+                    {
+                      "id": "TOSA3",
+                      "type": "ref",
+                      "ref": "w2cic",
+                      "name": "select instance",
+                      "width": 220,
+                      "descendants": {
+                        "lJExU": {
+                          "content": "Alfabético (A–Z)"
+                        }
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "id": "RQbCc",
+                      "name": "Caption",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Orden de los chips de filtro por departamento que ven tus visitantes.",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VeB7n",
+          "name": "Advanced Section",
+          "width": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "QEKZv",
+              "type": "ref",
+              "ref": "I3cOw",
+              "name": "Accordion Header",
+              "width": "fill_container"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "l6Otl0",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": "$border-divider",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            20,
+            0,
+            0,
+            0
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "Wd6qU",
+              "type": "ref",
+              "ref": "nysn1",
+              "name": "Save Button",
+              "descendants": {
+                "LK6hV": {
+                  "content": "Guardar campos"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "CcYfu",
+              "name": "Usage Hint",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TKsag",
+                  "name": "Usage Label",
+                  "fill": "$text-muted",
+                  "content": "Insertalo con:",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "o9f87B",
+                  "name": "Shortcode",
+                  "fill": "$text-body",
+                  "content": "[ldap_directory]",
+                  "fontFamily": "Roboto Mono",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
@@ -1215,6 +3245,18 @@
     "accent-soft": {
       "type": "color",
       "value": "#F0F6FA"
+    },
+    "success": {
+      "type": "color",
+      "value": "#46B450"
+    },
+    "success-soft": {
+      "type": "color",
+      "value": "#EDFAED"
+    },
+    "success-text": {
+      "type": "color",
+      "value": "#1E4620"
     }
   },
   "fileToken": "35885bc5-3510-433b-809f-5b51677b4a7f"

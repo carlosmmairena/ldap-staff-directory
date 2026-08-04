@@ -2,22 +2,28 @@
    LDAP Staff Directory — admin styles
    ========================================================================== */
 
-/* Two-column layout */
-.ldap-ed-admin-layout {
-	display: flex;
-	gap: 28px;
-	align-items: flex-start;
-	margin-top: 24px;
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+
+.ldap-ed-tabs {
+	margin-bottom: 24px;
 }
 
-.ldap-ed-settings-col {
-	flex: 1 1 auto;
-	min-width: 0;
+.ldap-ed-tabs.nav-tab-wrapper .nav-tab-active,
+.ldap-ed-tabs.nav-tab-wrapper .nav-tab-active:focus,
+.ldap-ed-tabs.nav-tab-wrapper .nav-tab-active:focus:active {
+	color: #0073aa;
 }
 
-.ldap-ed-sidebar-col {
-	flex: 0 0 280px;
-	max-width: 280px;
+.ldap-ed-tabpanel[hidden] {
+	display: none;
+}
+
+.ldap-ed-intro {
+	color: #646970;
+	font-size: 13px;
+	line-height: 1.6;
+	max-width: 720px;
+	margin: 0 0 20px;
 }
 
 /* ── Cards ───────────────────────────────────────────────────────────────── */
@@ -25,57 +31,301 @@
 .ldap-ed-card {
 	background: #fff;
 	border: 1px solid #c3c4c7;
-	border-top: 3px solid #0073aa;  /* accent stripe — overridden per card type below */
 	border-radius: 4px;
-	padding: 16px 18px 18px;
-	margin-bottom: 16px;
+	padding: 4px 18px;
+	margin-bottom: 20px;
+	max-width: 720px;
 }
 
-.ldap-ed-card--cache {
-	border-top-color: #00a0d2;
+.ldap-ed-card--tight {
+	padding: 14px 18px 18px;
 }
 
-.ldap-ed-card--usage {
-	border-top-color: #72777c;
+.ldap-ed-card--tight .description {
+	margin-top: 6px;
 }
 
-.ldap-ed-card h2 {
-	margin: 0 0 6px;
-	font-size: 11px;
+.ldap-ed-card__title {
+	font-size: 13px;
 	font-weight: 600;
 	color: #1d2327;
-	text-transform: uppercase;
-	letter-spacing: .06em;
-}
-
-.ldap-ed-card p {
-	margin: 0 0 12px;
-	color: #646970;
-	font-size: 13px;
-	line-height: 1.5;
-}
-
-.ldap-ed-card p.ldap-ed-card__label {
-	margin-top: 10px;
-	margin-bottom: 0;
-}
-
-.ldap-ed-card .button {
-	margin-top: 2px;
+	margin: 14px 0 6px;
 }
 
 .ldap-ed-card code {
-	display: block;
+	display: inline-block;
 	background: #f6f7f7;
 	border: 1px solid #dcdcde;
 	border-radius: 3px;
-	padding: 7px 10px;
+	padding: 3px 8px;
 	font-size: 12px;
 	font-family: Consolas, 'Courier New', monospace;
-	margin-top: 6px;
-	word-break: break-all;
 	color: #3c434a;
+}
+
+/* ── Field rows (label | field) ─────────────────────────────────────────── */
+
+.ldap-ed-row {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+	padding: 14px 0;
+}
+
+.ldap-ed-row + .ldap-ed-row,
+.ldap-ed-row--checkbox {
+	border-top: 1px solid #dcdcde;
+}
+
+.ldap-ed-row__label {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	width: 180px;
+	flex: 0 0 180px;
+	padding-top: 6px;
+}
+
+.ldap-ed-row__label label {
+	font-weight: 600;
+	font-size: 13px;
+	color: #1d2327;
+}
+
+.ldap-ed-row__field {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ldap-ed-row__field .description {
+	margin: 6px 0 0;
+	color: #646970;
+	font-size: 12px;
 	line-height: 1.5;
+}
+
+@media ( max-width: 782px ) {
+	.ldap-ed-row {
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.ldap-ed-row__label {
+		width: auto;
+		padding-top: 0;
+	}
+}
+
+/* ── Help popovers ───────────────────────────────────────────────────────── */
+
+.ldap-ed-info-btn {
+	width: 16px;
+	height: 16px;
+	flex: 0 0 16px;
+	padding: 0;
+	border: 1px solid #0073aa;
+	border-radius: 50%;
+	background: transparent;
+	color: #0073aa;
+	font-size: 10px;
+	line-height: 14px;
+	cursor: pointer;
+}
+
+.ldap-ed-info-btn:hover {
+	background: #0073aa;
+	color: #fff;
+}
+
+.ldap-ed-popover {
+	z-index: 100000;
+	width: 240px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px rgba( 0, 0, 0, .15 );
+	padding: 10px 12px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: #3c434a;
+}
+
+.ldap-ed-popover[hidden] {
+	display: none;
+}
+
+/* ── Advanced settings accordion ────────────────────────────────────────── */
+
+.ldap-ed-advanced {
+	max-width: 720px;
+	margin-bottom: 20px;
+}
+
+.ldap-ed-advanced__toggle {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+	background: none;
+	border: 0;
+	border-top: 1px solid #dcdcde;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.ldap-ed-advanced__toggle .dashicons {
+	transition: transform .15s ease;
+}
+
+.ldap-ed-advanced__toggle.is-expanded .dashicons {
+	transform: rotate( 180deg );
+}
+
+.ldap-ed-advanced__body[hidden] {
+	display: none;
+}
+
+.ldap-ed-advanced__body {
+	padding-top: 6px;
+}
+
+/* ── Callout: ask your LDAP admin ───────────────────────────────────────── */
+
+.ldap-ed-callout {
+	max-width: 720px;
+	background: #f0f6fa;
+	border-radius: 6px;
+	padding: 16px;
+	margin-bottom: 20px;
+}
+
+.ldap-ed-callout__title {
+	margin: 0 0 6px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.ldap-ed-callout p {
+	margin: 0 0 12px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #3c434a;
+}
+
+/* ── Fields to show + Extension attribute reveal ────────────────────────── */
+
+.ldap-ed-fields-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 20px;
+	padding: 6px 0 14px;
+}
+
+.ldap-ed-field-checkbox {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 13px;
+}
+
+.ldap-ed-extension-block {
+	background: #f0f6fa;
+	border-radius: 4px;
+	padding: 12px 14px;
+	margin-bottom: 14px;
+}
+
+.ldap-ed-extension-block[hidden] {
+	display: none;
+}
+
+.ldap-ed-extension-block__hint {
+	margin: 0 0 8px;
+	font-size: 12px;
+	color: #646970;
+}
+
+.ldap-ed-extension-block__label {
+	display: block;
+	font-weight: 600;
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+/* ── Employees tab: departments ─────────────────────────────────────────── */
+
+.ldap-ed-departments-section {
+	max-width: 720px;
+	margin-bottom: 20px;
+}
+
+.ldap-ed-departments-section__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+}
+
+.ldap-ed-departments-section__header h2 {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0;
+}
+
+.ldap-ed-departments-section .description {
+	margin: 6px 0 10px;
+}
+
+.ldap-ed-departments-checklist {
+	max-height: 220px;
+	overflow-y: auto;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 8px 10px;
+	background: #f6f7f7;
+	margin-bottom: 8px;
+}
+
+.ldap-ed-departments-checklist label {
+	display: block;
+	margin-bottom: 4px;
+}
+
+/* ── Test connection row ────────────────────────────────────────────────── */
+
+.ldap-ed-test-row {
+	max-width: 720px;
+	margin-bottom: 20px;
+}
+
+/* ── Fields tab footer ──────────────────────────────────────────────────── */
+
+.ldap-ed-footer {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.ldap-ed-usage-hint {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	color: #646970;
+}
+
+.ldap-ed-usage-hint code {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 3px 8px;
+	font-family: Consolas, 'Courier New', monospace;
+	color: #3c434a;
 }
 
 /* ── Bind password show/hide toggle ─────────────────────────────────────── */
@@ -118,23 +368,6 @@
 	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23646970' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24'/%3E%3Cline x1='1' y1='1' x2='23' y2='23'/%3E%3C/svg%3E" );
 }
 
-/* ── Department exclusion checklist ─────────────────────────────────────── */
-
-.ldap-ed-departments-checklist {
-	max-height: 220px;
-	overflow-y: auto;
-	border: 1px solid #dcdcde;
-	border-radius: 3px;
-	padding: 8px 10px;
-	background: #f6f7f7;
-	margin-bottom: 8px;
-}
-
-.ldap-ed-departments-checklist label {
-	display: block;
-	margin-bottom: 4px;
-}
-
 /* ── Result banners ─────────────────────────────────────────────────────── */
 
 .ldap-ed-test-result {
@@ -145,6 +378,7 @@
 	line-height: 1.4;
 	display: none;
 	position: relative;
+	max-width: 720px;
 }
 
 /* Icon slot shared by both states */
@@ -180,25 +414,4 @@
 
 .ldap-ed-test-result.is-error::before {
 	background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc3232' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v5M12 16h.01'/%3E%3C/svg%3E" );
-}
-
-/* ── Responsive ─────────────────────────────────────────────────────────── */
-
-@media ( max-width: 1024px ) {
-	.ldap-ed-admin-layout {
-		flex-direction: column;
-	}
-
-	.ldap-ed-sidebar-col {
-		flex: 1 1 auto;
-		max-width: 100%;
-		display: grid;
-		grid-template-columns: repeat( auto-fit, minmax( 220px, 1fr ) );
-		gap: 16px;
-	}
-
-	/* Cards inside the grid don't need bottom margin — gap handles spacing. */
-	.ldap-ed-card {
-		margin-bottom: 0;
-	}
 }

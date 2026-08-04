@@ -3,7 +3,7 @@
  * Plugin Name: LDAP Staff Directory
  * Plugin URI:  https://wordpress.org/plugins/ldap-staff-directory/
  * Description: Connects to LDAP or LDAPS to display an employee directory from an OU. Supports Elementor, Beaver Builder and a native shortcode.
- * Version:     1.1.4
+ * Version:     1.2.0
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author:      Carlos Mairena
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'LDAP_ED_VERSION',     '1.1.4' );
+define( 'LDAP_ED_VERSION',     '1.2.0' );
 define( 'LDAP_ED_FILE',        __FILE__ );
 define( 'LDAP_ED_DIR',         plugin_dir_path( __FILE__ ) );
 define( 'LDAP_ED_URL',         plugin_dir_url( __FILE__ ) );
@@ -136,6 +136,50 @@ function ldap_ed_split_server_scheme( string $raw_server ): array {
 		'scheme' => null,
 		'domain' => $value,
 	);
+}
+
+/**
+ * Sanitizes the LDAP connection fields (scheme, server, port, bind DN/password, base OU,
+ * SSL options) from a raw settings input array, applying the same rules whether the caller
+ * is persisting a real save (LDAP_ED_Admin::sanitize_settings()) or previewing an unsaved
+ * "Test Connection" click (LDAP_ED_Ajax::test_connection()) — keeping both paths in sync.
+ *
+ * Returned in the same shape stored in `ldap_ed_settings` (bind_pass encrypted), since
+ * LDAP_ED_Connector always decrypts internally at bind() time regardless of caller.
+ *
+ * @param array $input    Raw input, keyed like `ldap_ed_settings` (e.g. $_POST['ldap_ed_settings']).
+ * @param array $existing Currently saved `ldap_ed_settings` option, used for fallbacks.
+ * @return array{scheme:string,server:string,port:int,bind_dn:string,bind_pass:string,base_ou:string,verify_ssl:string,ca_cert:string}
+ */
+function ldap_ed_sanitize_connection_fields( array $input, array $existing ): array {
+	$clean = array();
+
+	$allowed_schemes = array( 'ldap', 'ldaps' );
+	$raw_scheme      = sanitize_text_field( $input['scheme'] ?? 'ldaps' );
+	$clean['scheme'] = in_array( $raw_scheme, $allowed_schemes, true ) ? $raw_scheme : 'ldaps';
+
+	// Server is domain-only — strip any scheme prefix pasted out of habit.
+	$server_split    = ldap_ed_split_server_scheme( $input['server'] ?? '' );
+	$clean['server'] = sanitize_text_field( $server_split['domain'] );
+
+	// An empty port means "use the default for the chosen scheme".
+	$raw_port      = trim( (string) ( $input['port'] ?? '' ) );
+	$default_port  = 'ldap' === $clean['scheme'] ? 389 : 636;
+	$clean['port'] = '' === $raw_port ? $default_port : absint( $raw_port );
+
+	$clean['bind_dn']    = sanitize_text_field( $input['bind_dn'] ?? '' );
+	$clean['base_ou']    = sanitize_text_field( $input['base_ou'] ?? '' );
+	$clean['verify_ssl'] = isset( $input['verify_ssl'] ) ? '1' : '0';
+	$clean['ca_cert']    = sanitize_text_field( $input['ca_cert'] ?? '' );
+
+	// Only replace the password if a new one was supplied — encrypt it at rest.
+	// A blank submission (the field is never pre-filled) means "keep the existing value".
+	$plain_pass         = ! empty( $input['bind_pass'] ) ? $input['bind_pass'] : '';
+	$clean['bind_pass'] = '' !== $plain_pass
+		? ldap_ed_encrypt_pass( $plain_pass )
+		: ( $existing['bind_pass'] ?? '' );
+
+	return $clean;
 }
 
 /**
