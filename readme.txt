@@ -8,7 +8,7 @@ Stable tag:        1.1.4
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
-Connects to an LDAPS server and displays an employee directory from a specific OU. Supports Elementor, Beaver Builder and a native shortcode.
+Connects to an LDAP or LDAPS server and displays an employee directory from a specific OU. Supports Elementor, Beaver Builder and a native shortcode.
 
 == Description ==
 
@@ -16,16 +16,19 @@ Connects to an LDAPS server and displays an employee directory from a specific O
 
 = Features =
 
-* Connects to any LDAP or LDAPS server (including Active Directory, OpenLDAP, Samba)
+* Connects to any LDAP or LDAPS server (including Active Directory, OpenLDAP, Samba), with the scheme chosen from a dedicated selector
 * Configurable Base OU and Bind DN
-* Extracts: full name, email, job title, department
+* Extracts: full name, email, job title, department, phone, and telephone extension (PBX / IP-PBX systems)
 * Shortcode `[ldap_directory]` usable in any post, page or widget
 * Native Elementor widget with full style controls
 * Native Beaver Builder module with General and Style tabs
-* Real-time client-side search (no page reload)
-* Client-side pagination with configurable items per page
-* Transient-based cache with configurable TTL and one-click invalidation
-* Admin panel under **Settings → LDAP Directory**
+* Department filter bar with configurable chip order (alphabetical or by contact count)
+* Exclude specific departments — or employees with no department assigned — from the public directory, enforced at the LDAP query level so those employees are never fetched
+* Exclude disabled Active Directory accounts
+* Server-side search and pagination, with configurable items per page
+* Handles directories with 1,000+ users via RFC 2696 paged LDAP results
+* Transient-based cache with configurable TTL, one-click invalidation, and a resilient stale fallback when LDAP is temporarily unreachable
+* Admin panel under **Settings → LDAP Directory**, with the bind password encrypted at rest and a show/hide toggle while editing
 * SSL certificate verification toggle (supports self-signed certs)
 * Optional CA certificate file path
 * Multisite compatible (per-site settings)
@@ -57,12 +60,16 @@ Go to **Settings → LDAP Directory → LDAP Connection** and uncheck **Verify S
 
 = How do I connect to Active Directory? =
 
-Use `ldaps://your-dc.domain.com` as the server, port `636`, and a service account DN such as `CN=svc-wordpress,OU=ServiceAccounts,DC=domain,DC=com`.
+Set **Scheme** to `LDAPS`, **Server** to your domain controller's hostname (e.g. `your-dc.domain.com` — no `ldap://`/`ldaps://` prefix needed), leave **Port** on its default (`636`), and use a service account DN such as `CN=svc-wordpress,OU=ServiceAccounts,DC=domain,DC=com` as **Bind DN**.
 
 = Can I show only certain fields? =
 
 Yes. In the admin panel, check or uncheck the fields you want. You can also override per shortcode:
 `[ldap_directory fields="name,title"]`
+
+= How do I hide certain departments from the public directory? =
+
+In the admin panel, under **LDAP Connection**, click **Refresh department list** to discover every department present in your directory (with employee counts), then check the ones you want to hide. Excluded departments are filtered at the LDAP query level, so those employees are never fetched from the server — not just hidden client-side. You can also exclude employees with no department assigned, as a separate checkbox.
 
 = How long is data cached? =
 

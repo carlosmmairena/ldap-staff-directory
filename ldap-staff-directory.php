@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LDAP Staff Directory
  * Plugin URI:  https://wordpress.org/plugins/ldap-staff-directory/
- * Description: Connects to LDAPS to display an employee directory from an OU. Supports Elementor, Beaver Builder and a native shortcode.
+ * Description: Connects to LDAP or LDAPS to display an employee directory from an OU. Supports Elementor, Beaver Builder and a native shortcode.
  * Version:     1.1.4
  * Requires at least: 5.8
  * Requires PHP: 7.4
