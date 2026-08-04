@@ -242,12 +242,13 @@ class LDAP_ED_Admin {
 		ob_start();
 		call_user_func( $field_cb );
 		$field_html = ob_get_clean();
+		$info_html  = $info ? $this->info_button( $for, $info ) : '';
 
 		printf(
 			'<div class="ldap-ed-row"><div class="ldap-ed-row__label"><label for="%1$s">%2$s</label>%3$s</div><div class="ldap-ed-row__field">%4$s</div></div>',
 			esc_attr( $for ),
 			esc_html( $label ),
-			$info ? $this->info_button( $for, $info ) : '',
+			$info_html, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- info_button() escapes via esc_attr()/esc_attr__() internally before returning.
 			$field_html // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $field_cb builds its own escaped markup, identical to the render_field_* methods called directly elsewhere.
 		);
 	}

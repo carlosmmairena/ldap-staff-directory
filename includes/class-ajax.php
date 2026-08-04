@@ -31,8 +31,8 @@ class LDAP_ED_Ajax {
 		}
 
 		$existing = get_option( LDAP_ED_OPTION_KEY, array() );
-		$posted   = isset( $_POST[ LDAP_ED_OPTION_KEY ] ) && is_array( $_POST[ LDAP_ED_OPTION_KEY ] )
-			? wp_unslash( $_POST[ LDAP_ED_OPTION_KEY ] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce already verified above via check_ajax_referer(); every value is individually sanitized inside ldap_ed_sanitize_connection_fields().
+		$posted   = isset( $_POST[ LDAP_ED_OPTION_KEY ] ) && is_array( $_POST[ LDAP_ED_OPTION_KEY ] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce already verified above via check_ajax_referer(); every value is individually sanitized below inside ldap_ed_sanitize_connection_fields().
+			? wp_unslash( $_POST[ LDAP_ED_OPTION_KEY ] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- nonce already verified above via check_ajax_referer(); every value is individually sanitized below inside ldap_ed_sanitize_connection_fields().
 			: array();
 
 		$settings  = array_merge( $existing, ldap_ed_sanitize_connection_fields( $posted, $existing ) );

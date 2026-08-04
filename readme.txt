@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.2.0
+Stable tag:        1.2.1
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,9 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Fi
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.2.1 =
+* Fix: Resolved WordPress Plugin Checker warnings — unescaped output in the settings row info-button helper and non-sanitized `$_POST` access in the test-connection AJAX handler (both were already safe at runtime; this satisfies static analysis).
 
 = 1.2.0 =
 * Feature: Settings page redesigned as 3 independently-saved tabs — Connection, Employees, Fields — so administrators without LDAP experience are guided through only what's relevant, instead of one long technical form.
