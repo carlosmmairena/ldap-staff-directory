@@ -16,8 +16,8 @@ jobs:
     - name: Run plugin check
       uses: wordpress/plugin-check-action@v1
       with:
-        exclude-directories: 'docs,.agents,.claude,.github,.interface-design,openspec'
-        exclude-files: 'CLAUDE.md,SECURITY.md,skills-lock.json,.gitignore'
+        exclude-directories: 'docs,.agents,.claude,.github,.interface-design,openspec,bin,tests'
+        exclude-files: 'CLAUDE.md,SECURITY.md,skills-lock.json,.gitignore,.wp-env.json,composer.json,composer.lock,phpunit.xml.dist'
 
   phpunit:
     runs-on: ubuntu-latest
