@@ -18,3 +18,14 @@ jobs:
       with:
         exclude-directories: 'docs,.agents,.claude,.github,.interface-design,openspec'
         exclude-files: 'CLAUDE.md,SECURITY.md,skills-lock.json,.gitignore'
+
+  phpunit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Same command as local dev — see openspec/changes/testing-infrastructure/design.md
+    # (Decision 5): wp-env start, openldap-test, PHPUnit (unit/wp/ldap testsuites).
+    - name: Run test suite
+      run: bash bin/test.sh
