@@ -65,6 +65,8 @@ Descubierto en implementación: `LDAP_ED_Ajax` instancia `new LDAP_ED_Connector(
 - **[Trade-off]** Sin fixtures dinámicas, ampliar casos de prueba (p. ej. un nuevo atributo LDAP) requiere editar el LDIF a mano. Aceptado: da trazabilidad y legibilidad del dataset de prueba, prioridad más alta que la conveniencia de generarlo por código.
 - **[Riesgo]** `wp-env` requiere Docker corriendo — en macOS eso es Docker Desktop. Si no está disponible, `bin/test.sh` debe fallar en el paso 1 con un mensaje claro, no con un error críptico de `wp-env`.
 - **[Riesgo, aceptado]** `wp-env` marca como deprecado el comportamiento por defecto de levantar dev+tests desde un solo `.wp-env.json` (recomienda dos archivos separados vía `--config`). Se mantiene el archivo único por ahora — menos piezas, comportamiento ya validado (`tests-cli` trae PHPUnit 9.6.36 preinstalado) — y se revisita cuando `wp-env` remueva el comportamiento legado, no antes.
+- **[Riesgo, resuelto en PR real]** `wordpress/plugin-check-action` (job `test`) escaneaba `bin/`, `tests/`, `.wp-env.json`, `composer.json`/`.lock`, `phpunit.xml.dist` como si fueran parte del plugin distribuido — errores falsos de "hidden/application files not permitted", ABSPATH faltante, y nombres de clase de test sin prefijo `LDAP_ED_`. → **Mitigación**: agregados al `exclude-directories`/`exclude-files` del job `test`, consistente con el Impact declarado en proposal.md ("sin impacto en runtime del plugin").
+- **[Nota, fuera de alcance]** El mismo run de CI mostró `Tested up to: 7.0 < 7.1` en `readme.txt` — pre-existente, no tocado por este cambio (ver `git log` de `readme.txt`), y no es responsabilidad de `testing-infrastructure` corregirlo.
 
 ## Migration Plan
 
