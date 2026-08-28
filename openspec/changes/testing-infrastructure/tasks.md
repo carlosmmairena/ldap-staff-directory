@@ -44,4 +44,4 @@
 - [x] 6.1 Agregar job `phpunit` en `.github/workflows/build-test.yml`, junto al job existente (`test`, plugin-check), invocando `bin/test.sh`
 - [x] 6.2 Decidido: mismo `on:` que el job existente — cada PR y push a `main`/`releases/*`, sin condición de job aparte
 - [x] 6.4 (descubierto en el PR real) `plugin-check-action` escaneaba `bin/`, `tests/`, `.wp-env.json`, `composer.json`/`.lock`, `phpunit.xml.dist` como si se distribuyeran con el plugin — errores falsos (hidden/application files, falta ABSPATH, clases de test sin prefijo). Agregados a `exclude-directories`/`exclude-files` del job `test`
-- [ ] 6.3 Confirmar que el job `phpunit` pasa en un runner limpio de GitHub Actions (sin estado previo de Docker) — PR abierto (`feat/testing-infrastructure`), esperando resultado tras el fix de 6.4
+- [x] 6.3 Confirmado por el mantenedor: el job `phpunit` pasó en GitHub Actions (runner limpio, sin estado previo de Docker) en el PR `feat/testing-infrastructure`
