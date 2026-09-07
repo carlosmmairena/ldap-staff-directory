@@ -11,6 +11,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class LDAP_ED_Shortcode {
 
+	/**
+	 * Deterministic avatar background colors, shared between employee and
+	 * department avatars. Color is picked via crc32( $name ) % count( palette ).
+	 */
+	private const AVATAR_PALETTE = array(
+		'#4f7df3', '#7c5cbf', '#0e9b8a',
+		'#2e9e4f', '#c0392b', '#d35400',
+		'#1a7bbf', '#8e44ad',
+	);
+
+	/**
+	 * Inline SVG icon paths (Lucide), keyed by icon name. Static, trusted
+	 * markup — never built from user input.
+	 */
+	private const ICONS = array(
+		'briefcase'     => '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+		'mail'          => '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+		'phone'         => '<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/>',
+		'building'      => '<rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>',
+		'chevron-right' => '<path d="m9 18 6-6-6-6"/>',
+		'arrow-left'    => '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+	);
+
 	public function __construct() {
 		add_shortcode( 'ldap_directory', array( $this, 'render' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_assets' ) );
@@ -56,6 +79,11 @@ class LDAP_ED_Shortcode {
 	/**
 	 * Render the directory HTML.
 	 *
+	 * Renders one of two views depending on whether a department is selected:
+	 * - No department (ldap_dept empty): department menu (department-menu.php).
+	 * - Department present: department detail — filtered/paginated employee
+	 *   grid (directory.php), unchanged from the pre-existing behavior.
+	 *
 	 * @param array $atts Shortcode attributes.
 	 * @return string HTML output.
 	 */
@@ -98,10 +126,18 @@ class LDAP_ED_Shortcode {
 			return '<p class="ldap-ed-error">' . esc_html( $all_users->get_error_message() ) . '</p>';
 		}
 
-		// Extract department list from the full (unfiltered) set for correct chip counts.
+		// Extract department list (with counts) from the full, unfiltered set.
 		$ldap_ed_department_order = $settings['department_order'] ?? 'alpha';
 		$ldap_ed_departments      = $this->extract_departments( $all_users, $ldap_ed_department_order );
 		$ldap_ed_all_count        = count( $all_users );
+
+		// No department selected: render the department menu. No filtering or
+		// pagination runs for this state — it's a flat list of all departments.
+		if ( '' === $ldap_ed_current_dept ) {
+			ob_start();
+			include LDAP_ED_DIR . 'public/views/department-menu.php';
+			return ob_get_clean();
+		}
 
 		// Apply department and search filters in PHP.
 		$filtered_users = $this->filter_users( $all_users, $ldap_ed_search_query, $ldap_ed_current_dept );
@@ -120,6 +156,58 @@ class LDAP_ED_Shortcode {
 		ob_start();
 		include LDAP_ED_DIR . 'public/views/directory.php';
 		return ob_get_clean();
+	}
+
+	// -------------------------------------------------------------------------
+	// Shared display helpers (avatars, icons) — used by both views' templates.
+
+	/**
+	 * Computes deterministic initials and an avatar background color for a
+	 * name (employee or department). Same color formula for both: crc32( $name )
+	 * modulo the shared 8-color palette.
+	 *
+	 * @param string $name            Employee or department name.
+	 * @param bool   $force_two_chars When true, a single-word name still yields
+	 *                                2-letter initials (used for department
+	 *                                abbreviations). Employee avatars keep the
+	 *                                pre-existing 1-letter behavior by default.
+	 * @return array{initials:string,color:string}
+	 */
+	public function get_initials_and_color( string $name, bool $force_two_chars = false ): array {
+		$parts    = preg_split( '/\s+/', trim( $name ), 2 );
+		$initials = strtoupper( substr( $parts[0] ?? '', 0, 1 ) );
+
+		if ( ! empty( $parts[1] ) ) {
+			$initials .= strtoupper( substr( $parts[1], 0, 1 ) );
+		} elseif ( $force_two_chars ) {
+			$initials .= strtoupper( substr( $parts[0] ?? '', 1, 1 ) );
+		}
+
+		$color = self::AVATAR_PALETTE[ abs( crc32( $name ) ) % count( self::AVATAR_PALETTE ) ];
+
+		return array(
+			'initials' => $initials,
+			'color'    => $color,
+		);
+	}
+
+	/**
+	 * Returns inline SVG markup for a static, trusted icon (Lucide-style).
+	 * Never built from user input — safe to echo without escaping.
+	 *
+	 * @param string $name Icon key, see self::ICONS.
+	 * @return string SVG markup, or '' when the icon name is unknown.
+	 */
+	public function get_icon_svg( string $name ): string {
+		if ( ! isset( self::ICONS[ $name ] ) ) {
+			return '';
+		}
+
+		return sprintf(
+			'<svg class="ldap-icon ldap-icon-%1$s" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%2$s</svg>',
+			esc_attr( $name ),
+			self::ICONS[ $name ]
+		);
 	}
 
 	// -------------------------------------------------------------------------

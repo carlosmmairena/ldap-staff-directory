@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.2.1
+Stable tag:        1.3.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Connects to an LDAP or LDAPS server and displays an employee directory from a sp
 * Shortcode `[ldap_directory]` usable in any post, page or widget
 * Native Elementor widget with full style controls
 * Native Beaver Builder module with General and Style tabs
-* Department filter bar with configurable chip order (alphabetical or by contact count)
+* Public directory browses department-first: a menu of departments (with employee counts) leads to each department's contact list, in configurable order (alphabetical or by contact count)
 * Exclude specific departments — or employees with no department assigned — from the public directory, enforced at the LDAP query level so those employees are never fetched
 * Exclude disabled Active Directory accounts
 * Server-side search and pagination, with configurable items per page
@@ -76,6 +76,10 @@ In the admin panel, under the **Employees** tab, click **Refresh department list
 
 By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Fields → Advanced settings**, or flush immediately with the **Clear Cache** button on that same tab.
 
+= Why do I now see a list of departments instead of all employees? =
+
+Starting in 1.3.0, the public directory browses department-first: visitors see a menu of departments with employee counts, and click into one to see its contacts. This replaces the previous single-page grid with a department filter bar. There is no setting to restore the old flat grid.
+
 == Screenshots ==
 
 1. Admin settings page — connection and display options
@@ -84,6 +88,12 @@ By default 60 minutes. Change the TTL under **Settings → LDAP Directory → Fi
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.3.0 =
+* Feature: The public directory now browses department-first. The root view shows a menu of departments (name, employee count, color-coded avatar) instead of the full employee grid; clicking a department opens its filtered, paginated contact list with a breadcrumb back to the menu.
+* Feature: Employee cards in the department view show a small icon next to job title, email, phone, and extension for easier scanning.
+* Breaking change: The department filter chip bar has been removed and replaced by the department menu described above. There is no setting to restore the previous single-page grid.
+* Chore: "Tested up to" updated to WordPress 7.1.
 
 = 1.2.1 =
 * Fix: Resolved WordPress Plugin Checker warnings — unescaped output in the settings row info-button helper and non-sanitized `$_POST` access in the test-connection AJAX handler (both were already safe at runtime; this satisfies static analysis).
