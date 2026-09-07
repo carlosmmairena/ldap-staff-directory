@@ -1,2 +1,7 @@
 .agents/
 .claude/
+
+# Testing infrastructure (openspec/changes/testing-infrastructure)
+/vendor/
+.phpunit.result.cache
+/wp-env-instance-*

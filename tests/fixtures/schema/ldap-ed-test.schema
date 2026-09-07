@@ -1,0 +1,31 @@
+# Custom test-only schema for the openldap-test fixture.
+#
+# LDAP_ED_Connector reads two AD-style attributes that are NOT part of the
+# standard core/cosine/inetorgperson/nis schemas OpenLDAP ships with:
+# `department` and `ipPhone`. This file declares just enough schema for
+# osixia/openldap to accept entries carrying them.
+#
+# OIDs below are arbitrary (private-use arc), valid only within this
+# disposable test directory — never registered, never exposed outside it.
+
+attributetype ( 1.3.6.1.4.1.56521.1.1
+	NAME 'department'
+	DESC 'AD-style department name (test schema)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256}
+	SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.56521.1.2
+	NAME 'ipPhone'
+	DESC 'AD-style IP phone / extension number (test schema)'
+	EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{64}
+	SINGLE-VALUE )
+
+objectclass ( 1.3.6.1.4.1.56521.1.100
+	NAME 'ldapEdTestPerson'
+	DESC 'Auxiliary class adding AD-style attributes for plugin tests'
+	AUXILIARY
+	MAY ( department $ ipPhone ) )
