@@ -26,7 +26,6 @@ cleanup() {
 	for role in tests-wordpress tests-cli tests-mysql; do
 		docker rm -f -v "${project}-${role}-1" >/dev/null 2>&1 || true
 	done
-	echo "  ✓ limpio (openldap-test se deja corriendo — se reusa entre corridas)"
 
 	# CI (and any other non-interactive invocation) has no stdin to prompt on —
 	# skip silently and leave wordpress/cli/mysql as they are.
@@ -35,17 +34,18 @@ cleanup() {
 	fi
 
 	local reply
-	read -r -p $'\n¿Eliminar también wordpress/cli/mysql (entorno de QA visual)? [y/N] ' reply || return
+	read -r -p $'\n¿Eliminar también wordpress/cli/mysql (entorno de QA visual) y openldap-test? [y/N] ' reply || return
 	reply="$(printf '%s' "$reply" | tr '[:upper:]' '[:lower:]')"
 	case "$reply" in
 	y | yes | s | si | sí)
 		for role in wordpress cli mysql; do
 			docker rm -f -v "${project}-${role}-1" >/dev/null 2>&1 || true
 		done
-		echo "  ✓ entorno de QA visual eliminado"
+		docker rm -f -v openldap-test >/dev/null 2>&1 || true
+		echo "  ✓ entorno de QA visual y openldap-test eliminado"
 		;;
 	*)
-		echo "  dejando wordpress/cli/mysql corriendo"
+		echo "  dejando wordpress/cli/mysql y openldap-test corriendo"
 		;;
 	esac
 }

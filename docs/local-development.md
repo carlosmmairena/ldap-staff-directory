@@ -32,9 +32,9 @@ Pasos, en orden fijo, sin prompts — se detiene en el primer paso que falle:
 3. `openldap-test` levantado y sembrado desde `tests/fixtures/directory.ldif`
 4. `vendor/bin/phpunit` (vía `wp-env run tests-cli`) — testsuites `unit`, `wp`, `ldap`
 
-Al salir (pase lo que pase — éxito, fallo, o `Ctrl-C`), `bin/test.sh` **elimina** el trío `tests-wordpress`/`tests-cli`/`tests-mysql` de wp-env (existe solo para PHPUnit). Por eso cada corrida lo reconstruye desde cero (~25-30s). `openldap-test` **no se elimina** — se reusa entre corridas.
+Al salir (pase lo que pase — éxito, fallo, o `Ctrl-C`), `bin/test.sh` **elimina** el trío `tests-wordpress`/`tests-cli`/`tests-mysql` de wp-env (existe solo para PHPUnit). Por eso cada corrida lo reconstruye desde cero (~25-30s). `openldap-test` **no se elimina automáticamente** — se reusa entre corridas.
 
-Si corrés `bin/test.sh` en una terminal interactiva, al final te pregunta si además querés eliminar `wordpress`/`cli`/`mysql` (el sitio de QA visual). Es la única pregunta de todo el script — en CI (sin terminal) se salta sola y esos tres contenedores quedan como estaban.
+Si corrés `bin/test.sh` en una terminal interactiva, al final te pregunta si además querés eliminar `wordpress`/`cli`/`mysql` (el sitio de QA visual). Si contestás que sí, también se elimina `openldap-test` junto con ellos — sin `wordpress`/`cli`/`mysql` corriendo, `openldap-test` se queda sin nadie a quien hablarle hasta el próximo `wp-env start`, así que no tiene sentido dejarlo huérfano. Es la única pregunta de todo el script — en CI (sin terminal) se salta sola y los tres contenedores (más `openldap-test`) quedan como estaban.
 
 Para correr solo una capa durante desarrollo activo:
 

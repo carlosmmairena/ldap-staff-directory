@@ -65,11 +65,11 @@ The project SHALL provide a single entry-point script (`bin/test.sh`) that runs 
 
 #### Scenario: PHPUnit-only containers are removed on exit, everything else persists
 - **WHEN** `bin/test.sh` exits, for any reason (all steps passed, a step failed, or the script was interrupted)
-- **THEN** wp-env's `tests-wordpress`/`tests-cli`/`tests-mysql` containers are removed; `openldap-test` and `wordpress`/`cli`/`mysql` (the QA-visual environment) are left running, reused by the next invocation
+- **THEN** wp-env's `tests-wordpress`/`tests-cli`/`tests-mysql` containers are removed; `openldap-test` and `wordpress`/`cli`/`mysql` (the QA-visual environment) are left running, reused by the next invocation, unless the interactive removal below is accepted
 
-#### Scenario: Removing the QA-visual environment is offered, never automatic
+#### Scenario: Removing the QA-visual environment also removes openldap-test
 - **WHEN** `bin/test.sh` exits on an interactive terminal (`stdin`/`stdout` both a TTY)
-- **THEN** the script asks once whether to also remove `wordpress`/`cli`/`mysql`, and removes them only on an affirmative answer (`y`/`yes`/`s`/`si`/`sí`, case-insensitive) — this is the one exception to the wizard's no-prompts rule, scoped to this single question
+- **THEN** the script asks once whether to also remove `wordpress`/`cli`/`mysql`, and on an affirmative answer (`y`/`yes`/`s`/`si`/`sí`, case-insensitive) removes `wordpress`/`cli`/`mysql` **and** `openldap-test` together — once the QA-visual environment is gone, `openldap-test` has no consumer left on the network until the next `wp-env start`, so leaving it running orphaned serves no purpose. This is the one exception to the wizard's no-prompts rule, scoped to this single question
 
 #### Scenario: The prompt never blocks a non-interactive run
 - **WHEN** `bin/test.sh` runs without a TTY (CI, or any piped/redirected invocation)
