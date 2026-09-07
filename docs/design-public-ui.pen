@@ -1,0 +1,4585 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "tsr1X",
+      "x": 0,
+      "y": 0,
+      "name": "Component/EmployeeCard",
+      "reusable": true,
+      "width": 320,
+      "fill": "#ffffff",
+      "cornerRadius": 8,
+      "stroke": "#e2e4e7",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#0000000f",
+        "offset": {
+          "x": 0,
+          "y": 1
+        },
+        "blur": 3
+      },
+      "layout": "vertical",
+      "gap": 8,
+      "padding": 20,
+      "children": [
+        {
+          "type": "frame",
+          "id": "J9yNP",
+          "name": "avWrap",
+          "width": 44,
+          "height": 44,
+          "fill": "#4f7df3",
+          "cornerRadius": 22,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "P8nQX",
+              "fill": "#ffffff",
+              "content": "JD",
+              "fontFamily": "Inter",
+              "fontSize": 17,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "Vpb4I",
+          "fill": "#3c434a",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Jane Doe",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "zPk6a",
+          "name": "titleRow",
+          "width": "fill_container",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "Vz0rM",
+              "name": "titleIco",
+              "width": 12,
+              "height": 12,
+              "icon": "briefcase",
+              "library": "lucide",
+              "fill": "#8c8f94"
+            },
+            {
+              "type": "text",
+              "id": "mtAMW",
+              "fill": "#646970",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Software Engineer",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WrqDG",
+          "name": "deptPill",
+          "fill": "#e8f4f9",
+          "cornerRadius": 10,
+          "padding": [
+            3,
+            8
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "pMlaR",
+              "fill": "#005a87",
+              "content": "Engineering",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wq4Lj",
+          "name": "emailRow",
+          "width": "fill_container",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "mncIF",
+              "name": "emailIco",
+              "width": 12,
+              "height": 12,
+              "icon": "mail",
+              "library": "lucide",
+              "fill": "#8c8f94"
+            },
+            {
+              "type": "text",
+              "id": "WOOxp",
+              "fill": "#0073aa",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "jane.doe@empresa.go.cr",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Vy9Qd",
+          "name": "phoneRow",
+          "width": "fill_container",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "SI4CV",
+              "name": "phoneIco",
+              "width": 12,
+              "height": 12,
+              "icon": "phone",
+              "library": "lucide",
+              "fill": "#8c8f94"
+            },
+            {
+              "type": "text",
+              "id": "zrnAS",
+              "fill": "#0073aa",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "+506 2200-0000",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xBn0b",
+          "name": "extensionPhoneRow",
+          "width": "fill_container",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "mQGpB",
+              "name": "phoneIco",
+              "width": 12,
+              "height": 12,
+              "icon": "building",
+              "library": "lucide",
+              "fill": "#8c8f94"
+            },
+            {
+              "type": "text",
+              "id": "E3Ge2U",
+              "fill": "#646970",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "2013",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "FmKQl",
+      "x": 0,
+      "y": 330,
+      "name": "Component/ChipDefault",
+      "reusable": true,
+      "cornerRadius": 20,
+      "stroke": "#c3c4c7",
+      "strokeWidth": 1,
+      "padding": [
+        6,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "D08N92",
+          "fill": "#3c434a",
+          "content": "Department (00)",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "dmezU",
+      "x": 0,
+      "y": 380,
+      "name": "Component/ChipActive",
+      "reusable": true,
+      "fill": "#0073aa",
+      "cornerRadius": 20,
+      "padding": [
+        6,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "OTGlh",
+          "fill": "#ffffff",
+          "content": "Department (00)",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "M8N7qc",
+      "x": 0,
+      "y": 430,
+      "name": "Component/ChipActiveX",
+      "reusable": true,
+      "fill": "#0073aa",
+      "cornerRadius": 20,
+      "gap": 6,
+      "padding": [
+        6,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "Uuyl1",
+          "fill": "#ffffff",
+          "content": "Engineering (47)",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "500"
+        },
+        {
+          "type": "text",
+          "id": "wiB0u",
+          "opacity": 0.75,
+          "fill": "#ffffff",
+          "content": "×",
+          "fontFamily": "Inter",
+          "fontSize": 16,
+          "fontWeight": "700"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "KdCvc",
+      "x": 450,
+      "y": 0,
+      "name": "Screen 1 — Menú de departamentos",
+      "width": 1140,
+      "fill": "#f6f7f7",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "q1wqI",
+          "name": "s1top",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "YnM66",
+              "name": "s1header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "U6XfI",
+                  "name": "s1headerText",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "z7Uq87",
+                      "name": "DirTitle",
+                      "fill": "#1d2327",
+                      "content": "Directorio de Personal",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eICyX",
+                      "name": "DirSub",
+                      "fill": "#646970",
+                      "content": "20 departamentos · 312 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JhkpU",
+                  "name": "s1srch",
+                  "width": 250,
+                  "height": 36,
+                  "fill": "#f6f7f7",
+                  "cornerRadius": 6,
+                  "stroke": "#c3c4c7",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    10,
+                    0,
+                    8
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "JKaBM",
+                      "name": "srchIco",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "search",
+                      "library": "lucide",
+                      "fill": "#8c8f94"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GAFJL",
+                      "name": "srchPh",
+                      "fill": "#c3c4c7",
+                      "content": "Buscar departamento…",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YphN5",
+          "name": "s1ga",
+          "width": "fill_container",
+          "fill": "#f6f7f7",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "FN1Kx",
+              "name": "deptWrapper",
+              "width": 880,
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "R2kGGc",
+                  "name": "deptLbl",
+                  "fill": "#8c8f94",
+                  "content": "DEPARTAMENTOS",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "z4qtm",
+                  "name": "deptGrid",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "lUQJJ",
+                      "name": "deptColL",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "FmKyC",
+                          "name": "dept_AD",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "MwNMK",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#e67e22",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "bprXH",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "AD",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "O7ITl",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "P0H6R",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Administración",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Yb8gX",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "25 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "LA7CT",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RNdPS",
+                          "name": "dept_CA",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "FS8oM",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#8e44ad",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "B6M3h",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "CA",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "usaYF",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "N0l4H",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Calidad",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "DWH4I",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "6 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "yASSb",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wBiyf",
+                          "name": "dept_CO",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Smh6N",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#c0392b",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ZmPgl",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "CO",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "tIW92",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Xtbno",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Comunicaciones",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "F8YCkC",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "14 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "y0fsY",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UB0cq",
+                          "name": "dept_EN",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Zymv4",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#4f7df3",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "cXFBJ",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "EN",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "MPh2d",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "u9hqo",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Engineering",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "HxXVA",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "47 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "b4bGk",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HHyek",
+                          "name": "dept_GA",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Y98p7",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#27ae60",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "W7FVD",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "GA",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "QNagP",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "zNofK",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Gestión Ambiental",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "EEQyo",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "8 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "z8EsJd",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qcaSP",
+                          "name": "dept_LO",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "v055IV",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#27ae60",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "cOJhx",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "LO",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Iaicx",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "icLnm",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Logística",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "F6YnsS",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "19 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "muEM0",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wQsaf",
+                          "name": "dept_OP",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "BUYGQ",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#d35400",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "fUqCt",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "OP",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "sO1KT",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "e2ewdY",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Operaciones",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "USIr0",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "28 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "DdkOG",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "H9dgLr",
+                          "name": "dept_PR",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "HGgGk",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#2980b9",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "geY1S",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "PR",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "J5Lnzy",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "KBbGi",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Proyectos",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "WXODC",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "22 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "KVm17",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Hww4J",
+                          "name": "dept_SG",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Qc60p",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#34495e",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "fJs1w",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "SG",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "IBG0L",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "c8ebqF",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Seguridad",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "ETv4q",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "12 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "nzIB1",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "p8bGgu",
+                          "name": "dept_TH",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "uJia2",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#c0392b",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "CRuSQ",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "TH",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Xv85c",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ZQfnE",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Talento Humano",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "UI35y",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "13 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "b2dtn",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "A76Bf",
+                      "name": "deptColR",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "PNx2x",
+                          "name": "dept_AU",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Qu9db",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#d35400",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "N3U1A5",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "AU",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "mH2HI",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "u2J4Zb",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Auditoría",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "W5PgI",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "7 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "Sm1s5",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "i7kOjJ",
+                          "name": "dept_CP",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "SBUFg",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#f39c12",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "NRMr0",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "CP",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Lo5se",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Y1BwE",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Compras",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "hDYZ7",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "8 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "PXXw2",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "v59e6",
+                          "name": "dept_DG",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "dyOyW",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#e74c3c",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "bBuqn",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "DG",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "PWxDl",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "anC7l",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Dirección General",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "MSyxu",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "4 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "v7A3TF",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "yziSO",
+                          "name": "dept_FZ",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "ZXHY3",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#1a7bbf",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Z9PRKx",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "FZ",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "o5o1kq",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "lKIrE",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Finanzas",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "vcGeJ",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "15 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "Ue47G",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Wh89g",
+                          "name": "dept_LG",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "jC83t",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#8e44ad",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "dAqa9",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "LG",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "nKAu4",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "HcEbl",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Legal",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "YFbyT",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "9 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "S01FZ6",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Jfbor",
+                          "name": "dept_MK",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "NgsET",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#0e9b8a",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "z1KR4",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "MK",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "iPdTZ",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "fN8YE",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Marketing",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "IG2M7",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "18 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "UBMRj",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dtszA",
+                          "name": "dept_PL",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "h1CeZk",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#16a085",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Hk5Le",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "PL",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "BnSqB",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "V4HyxS",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Planificación",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "N6GZdy",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "11 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "n3cCA6",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nz0Ya",
+                          "name": "dept_RH",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Z1UZDl",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#7c5cbf",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "aYAYg",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "RH",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "I5jnSF",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "b2gbqo",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "RRHH",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "xZM1v",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "23 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "WkB17",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "BR60T",
+                          "name": "dept_ST",
+                          "width": "fill_container",
+                          "fill": "#ffffff",
+                          "cornerRadius": 8,
+                          "stroke": "#e2e4e7",
+                          "strokeWidth": 1,
+                          "strokeAlignment": "inner",
+                          "gap": 10,
+                          "padding": [
+                            10,
+                            14
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Gg7d9",
+                              "name": "av",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "#1abc9c",
+                              "cornerRadius": 18,
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Zt3NG",
+                                  "name": "abr",
+                                  "fill": "#ffffff",
+                                  "content": "ST",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "bBdDN",
+                              "name": "nw",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Xe6DY",
+                                  "name": "dN",
+                                  "fill": "#1d2327",
+                                  "content": "Soporte Técnico",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "y5C9k",
+                                  "name": "dC",
+                                  "fill": "#8c8f94",
+                                  "content": "17 empleados",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "icon",
+                              "id": "QyImT",
+                              "name": "chv",
+                              "width": 14,
+                              "height": 14,
+                              "icon": "chevron-right",
+                              "library": "lucide",
+                              "fill": "#c3c4c7"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "L65WT",
+          "name": "pag1",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "gap": 16,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "rpbZT",
+              "fill": "#646970",
+              "content": "312 empleados distribuidos en 20 departamentos",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "sJH5D",
+      "x": 1670,
+      "y": 0,
+      "name": "Screen 2 — Detalle de departamento",
+      "width": 1140,
+      "fill": "#f6f7f7",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "y49xwi",
+          "name": "s2top",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "kZVQE",
+              "name": "s2breadcrumb",
+              "width": "fill_container",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "aQxyh",
+                  "name": "bcArr",
+                  "width": 13,
+                  "height": 13,
+                  "icon": "arrow-left",
+                  "library": "lucide",
+                  "fill": "#0073aa"
+                },
+                {
+                  "type": "text",
+                  "id": "rZFnv",
+                  "name": "bcLink",
+                  "fill": "#0073aa",
+                  "content": "Departamentos",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n55k3",
+              "name": "s2deptHeader",
+              "width": "fill_container",
+              "gap": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "TwtGO",
+                  "name": "s2deptInfo",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jHC91",
+                      "name": "s2deptName",
+                      "fill": "#1d2327",
+                      "content": "Engineering",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "v5y4i",
+                      "name": "s2deptSub",
+                      "fill": "#646970",
+                      "content": "47 empleados en este departamento",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hSfg2",
+                  "name": "s2badge",
+                  "width": 44,
+                  "height": 44,
+                  "fill": "#4f7df3",
+                  "cornerRadius": 22,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T6jpp",
+                      "name": "s2badgeT",
+                      "fill": "#ffffff",
+                      "content": "EN",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ixHgV",
+              "name": "s2sw",
+              "width": "fill_container",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JGC0R",
+                  "name": "s2sb",
+                  "width": 380,
+                  "height": 40,
+                  "fill": "#ffffff",
+                  "cornerRadius": 6,
+                  "stroke": "#c3c4c7",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    12,
+                    0,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "yjjB7",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "search",
+                      "library": "lucide",
+                      "fill": "#8c8f94"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QkJug",
+                      "fill": "#c3c4c7",
+                      "content": "Buscar en Engineering…",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dLe6V",
+          "name": "s2ga",
+          "width": "fill_container",
+          "fill": "#f6f7f7",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "GFU6Y",
+              "fill": "#8c8f94",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "CONTACTOS",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "geKqY",
+              "name": "e1",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "F5qdC",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#7c5cbf"
+                    },
+                    "P8nQX": {
+                      "content": "EB"
+                    },
+                    "Vpb4I": {
+                      "content": "Emilio Blanco"
+                    },
+                    "mtAMW": {
+                      "content": "DevOps Engineer"
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "e.blanco@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1241"
+                    },
+                    "E3Ge2U": {
+                      "content": "2241"
+                    }
+                  }
+                },
+                {
+                  "id": "VCRlz",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#0e9b8a"
+                    },
+                    "P8nQX": {
+                      "content": "AC"
+                    },
+                    "Vpb4I": {
+                      "content": "Dora Corrales"
+                    },
+                    "mtAMW": {
+                      "content": "Business Analyst"
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "a.corrales@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1118"
+                    },
+                    "E3Ge2U": {
+                      "content": "2118"
+                    }
+                  }
+                },
+                {
+                  "id": "LOvOV",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#4f7df3"
+                    },
+                    "P8nQX": {
+                      "content": "JD"
+                    },
+                    "Vpb4I": {
+                      "content": "Juan Díaz"
+                    },
+                    "mtAMW": {
+                      "content": "Ing. Software Sr."
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "j.diaz@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1302"
+                    },
+                    "E3Ge2U": {
+                      "content": "2302"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RtfN0",
+              "name": "e2",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "id": "Ceriu",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#1a7bbf"
+                    },
+                    "P8nQX": {
+                      "content": "DF"
+                    },
+                    "Vpb4I": {
+                      "content": "Diego Fuentes"
+                    },
+                    "mtAMW": {
+                      "content": "QA Engineer"
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "d.fuentes@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1175"
+                    },
+                    "E3Ge2U": {
+                      "content": "2175"
+                    }
+                  }
+                },
+                {
+                  "id": "aZnFt",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#4f7df3"
+                    },
+                    "P8nQX": {
+                      "content": "VQ"
+                    },
+                    "Vpb4I": {
+                      "content": "Valentina Quirós"
+                    },
+                    "mtAMW": {
+                      "content": "Dev. Frontend"
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "v.quiros@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1229"
+                    },
+                    "E3Ge2U": {
+                      "content": "2229"
+                    }
+                  }
+                },
+                {
+                  "id": "JuRFX",
+                  "type": "ref",
+                  "ref": "tsr1X",
+                  "width": "fill_container",
+                  "descendants": {
+                    "J9yNP": {
+                      "fill": "#8e44ad"
+                    },
+                    "P8nQX": {
+                      "content": "MR"
+                    },
+                    "Vpb4I": {
+                      "content": "Mía Rodríguez"
+                    },
+                    "mtAMW": {
+                      "content": "UX Designer"
+                    },
+                    "pMlaR": {
+                      "content": "Engineering"
+                    },
+                    "WOOxp": {
+                      "content": "m.rodriguez@corp.com"
+                    },
+                    "zrnAS": {
+                      "content": "+506 2200-1158"
+                    },
+                    "E3Ge2U": {
+                      "content": "2158"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PPlBh",
+          "name": "pag2",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "gap": 16,
+          "padding": [
+            16,
+            24
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "g0HUQ",
+              "name": "prev2",
+              "opacity": 0.38,
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                7,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "by41a",
+                  "fill": "#646970",
+                  "content": "← Anterior",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "xQzGR",
+              "fill": "#646970",
+              "content": "Mostrando 1–20 de 47 en Engineering",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "u9gl4",
+              "name": "nxt2",
+              "cornerRadius": 8,
+              "stroke": "#0073aa",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                7,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rlppL",
+                  "fill": "#0073aa",
+                  "content": "Siguiente →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "K5YtD",
+      "x": 2900,
+      "y": 0,
+      "name": "Mobile Screen 1 — Menú de departamentos",
+      "width": 390,
+      "fill": "#f6f7f7",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "lTKTv",
+          "name": "ms1top",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "Zwilh",
+              "name": "ms1header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 3,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "p6oiJ",
+                  "name": "ms1Title",
+                  "fill": "#1d2327",
+                  "content": "Directorio de Personal",
+                  "fontFamily": "Inter",
+                  "fontSize": 17,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "y8w01",
+                  "name": "ms1Sub",
+                  "fill": "#646970",
+                  "content": "20 departamentos · 312 empleados",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jShcE",
+              "name": "ms1sb",
+              "width": "fill_container",
+              "height": 42,
+              "fill": "#ffffff",
+              "cornerRadius": 6,
+              "stroke": "#c3c4c7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 8,
+              "padding": [
+                0,
+                12,
+                0,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "QSAR9",
+                  "width": 15,
+                  "height": 15,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "#8c8f94"
+                },
+                {
+                  "type": "text",
+                  "id": "hJKzp",
+                  "fill": "#c3c4c7",
+                  "content": "Buscar departamento…",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cfHwj",
+          "name": "ms1ga",
+          "width": "fill_container",
+          "fill": "#f6f7f7",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "vAERu",
+              "name": "ms1deptLbl",
+              "fill": "#8c8f94",
+              "content": "DEPARTAMENTOS",
+              "fontFamily": "Inter",
+              "fontSize": 9,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "XTRQI",
+              "name": "dept_AD",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "uHMYA",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#e67e22",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lztR5",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "AD",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j8LzQ",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xMmr6",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Administración",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ipH1v",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "25 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "sgU5Q",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jCVlP",
+              "name": "dept_AU",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "S2QIIa",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#d35400",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lYi4B",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "AU",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YYlXf",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lD1Y1",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Auditoría",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aoyCw",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "7 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "r1o6L",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ygdZV",
+              "name": "dept_CA",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "X9EOZY",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#8e44ad",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Qmbp7",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "CA",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "m9Vq2",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "okGWM",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Calidad",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OUR9p",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "6 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "bKwZx",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uYGch",
+              "name": "dept_CP",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Dkbdf",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#f39c12",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rw45K",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "CP",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SmT77",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "d7JWy",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Compras",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lyX6A",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "8 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "s1OLBc",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "P0VIT7",
+              "name": "dept_CO",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "l2thMH",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#c0392b",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zJ4B0",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "CO",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hWbIH",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oimOf",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Comunicaciones",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aKizE",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "14 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "I2VV1i",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "s08gM",
+              "name": "dept_DG",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i51Xm",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#e74c3c",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gMkdn",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "DG",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Dldld",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kvxs8",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Dirección General",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "v5K38n",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "4 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "Y36jf",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HnHy4",
+              "name": "dept_EN",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CK86W",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#4f7df3",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jg0mS",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "EN",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jpvNL",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yrJbq",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Engineering",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UEeBI",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "47 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "frMcj",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xIcVo",
+              "name": "dept_FZ",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fRlDN",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#1a7bbf",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Im00X",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "FZ",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KJmjx",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o2ppjB",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Finanzas",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "k5VdC",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "15 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "pjfzN",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lWhmx",
+              "name": "dept_GA",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YkUL3",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#27ae60",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WqRT0",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "GA",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "V2Poa",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ppd7k",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Gestión Ambiental",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aFePg",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "8 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "bYjIy",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UFDHH",
+              "name": "dept_LG",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "mdwnd",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#8e44ad",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ktjVT",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "LG",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fLg7f",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wHaxM",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Legal",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y6JS5",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "9 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "VLPS7",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "C5d3O",
+              "name": "dept_LO",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i2Uenb",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#27ae60",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "C0b81V",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "LO",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pHg6G",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DLy8y",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Logística",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N7fhc",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "19 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "xr7lP",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Uvsf1",
+              "name": "dept_MK",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zImU4",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#0e9b8a",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jiPI7",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "MK",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VKHPp",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OyE9V",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Marketing",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "AWFsq",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "18 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "bNSMj",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "inc8D",
+              "name": "dept_OP",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HEiaS",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#d35400",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GkuMU",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "OP",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LJfRR",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DmnkX",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Operaciones",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uBs77",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "28 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "W4CUFb",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E4scTO",
+              "name": "dept_PL",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JVAid",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#16a085",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lTafG",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "PL",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "U9S9hJ",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YUanI",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Planificación",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "o6eR5",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "11 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "zG3Lw",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Vu4Zb",
+              "name": "dept_PR",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K8WjYm",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#2980b9",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PfgKW",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "PR",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gk0zg",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "y2Qrc",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Proyectos",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "T1YgQd",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "22 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "xXgzf",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nevoh",
+              "name": "dept_RH",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "X2Xof",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#7c5cbf",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qFtQx",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "RH",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ckZoT",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ta9jP",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "RRHH",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KE5J1",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "23 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "s4S8Hi",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "n5oDl",
+              "name": "dept_SG",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t1RLO",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#34495e",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JDb0l",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "SG",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qzOZP",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "miqZk",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Seguridad",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "L96mcI",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "12 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "ucr38",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EsBts",
+              "name": "dept_ST",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "grx5Y",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#1abc9c",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gvXBb",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "ST",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "UuXR5",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "I07eV4",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Soporte Técnico",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "plcjQ",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "17 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "V6H5EY",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qhO3O",
+              "name": "dept_TH",
+              "width": "fill_container",
+              "fill": "#ffffff",
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 10,
+              "padding": [
+                10,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZKGBc",
+                  "name": "av",
+                  "width": 32,
+                  "height": 32,
+                  "fill": "#c0392b",
+                  "cornerRadius": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PWNXI",
+                      "name": "abr",
+                      "fill": "#ffffff",
+                      "content": "TH",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MU1o2",
+                  "name": "nw",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "A7xKJe",
+                      "name": "dN",
+                      "fill": "#1d2327",
+                      "content": "Talento Humano",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DLtvK",
+                      "name": "dC",
+                      "fill": "#8c8f94",
+                      "content": "13 empleados",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "FOaXV",
+                  "name": "chv",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-right",
+                  "library": "lucide",
+                  "fill": "#c3c4c7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DATGt",
+          "name": "ms1pag",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "gap": 10,
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ffe3b",
+              "fill": "#646970",
+              "content": "312 empleados · 20 departamentos",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "xSA92",
+      "x": 3360,
+      "y": 0,
+      "name": "Mobile Screen 2 — Detalle de departamento",
+      "width": 390,
+      "fill": "#f6f7f7",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "bEnqM",
+          "name": "ms2top",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "FDirt",
+              "name": "ms2bc",
+              "width": "fill_container",
+              "gap": 5,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "PKFHy",
+                  "name": "bcArr",
+                  "width": 13,
+                  "height": 13,
+                  "icon": "arrow-left",
+                  "library": "lucide",
+                  "fill": "#0073aa"
+                },
+                {
+                  "type": "text",
+                  "id": "gnWuo",
+                  "name": "bcLink",
+                  "fill": "#0073aa",
+                  "content": "Departamentos",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MXzwU",
+              "name": "ms2deptHdr",
+              "width": "fill_container",
+              "gap": 12,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kzEmj",
+                  "name": "ms2deptInfo",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "koyjJ",
+                      "name": "ms2deptName",
+                      "fill": "#1d2327",
+                      "content": "Engineering",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "y9uwx",
+                      "name": "ms2deptSub",
+                      "fill": "#646970",
+                      "content": "47 empleados en este departamento",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TcNJg",
+                  "name": "ms2badge",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "#4f7df3",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v03yev",
+                      "name": "ms2badgeT",
+                      "fill": "#ffffff",
+                      "content": "EN",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yObWc",
+              "name": "ms2sb",
+              "width": "fill_container",
+              "height": 42,
+              "fill": "#ffffff",
+              "cornerRadius": 6,
+              "stroke": "#c3c4c7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 8,
+              "padding": [
+                0,
+                12,
+                0,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "i3xHG",
+                  "width": 15,
+                  "height": 15,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "#8c8f94"
+                },
+                {
+                  "type": "text",
+                  "id": "TbzI5",
+                  "fill": "#c3c4c7",
+                  "content": "Buscar en Engineering…",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rpAZm",
+          "name": "ms2ga",
+          "width": "fill_container",
+          "fill": "#f6f7f7",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "Vn7Ed",
+              "fill": "#8c8f94",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "CONTACTOS",
+              "fontFamily": "Inter",
+              "fontSize": 9,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "id": "H5Wz83",
+              "type": "ref",
+              "ref": "tsr1X",
+              "width": "fill_container",
+              "descendants": {
+                "J9yNP": {
+                  "fill": "#7c5cbf"
+                },
+                "P8nQX": {
+                  "content": "EB"
+                },
+                "Vpb4I": {
+                  "content": "Emilio Blanco"
+                },
+                "mtAMW": {
+                  "content": "DevOps Engineer"
+                },
+                "pMlaR": {
+                  "content": "Engineering"
+                },
+                "WOOxp": {
+                  "content": "e.blanco@corp.com"
+                },
+                "zrnAS": {
+                  "content": "+506 2200-1241"
+                },
+                "E3Ge2U": {
+                  "content": "2241"
+                }
+              }
+            },
+            {
+              "id": "MUvBb",
+              "type": "ref",
+              "ref": "tsr1X",
+              "width": "fill_container",
+              "descendants": {
+                "J9yNP": {
+                  "fill": "#4f7df3"
+                },
+                "P8nQX": {
+                  "content": "JD"
+                },
+                "Vpb4I": {
+                  "content": "Juan Díaz"
+                },
+                "mtAMW": {
+                  "content": "Ing. Software Sr."
+                },
+                "pMlaR": {
+                  "content": "Engineering"
+                },
+                "WOOxp": {
+                  "content": "j.diaz@corp.com"
+                },
+                "zrnAS": {
+                  "content": "+506 2200-1302"
+                },
+                "E3Ge2U": {
+                  "content": "2302"
+                }
+              }
+            },
+            {
+              "id": "TYrZx",
+              "type": "ref",
+              "ref": "tsr1X",
+              "width": "fill_container",
+              "descendants": {
+                "J9yNP": {
+                  "fill": "#4f7df3"
+                },
+                "P8nQX": {
+                  "content": "VQ"
+                },
+                "Vpb4I": {
+                  "content": "Valentina Quirós"
+                },
+                "mtAMW": {
+                  "content": "Dev. Frontend"
+                },
+                "pMlaR": {
+                  "content": "Engineering"
+                },
+                "WOOxp": {
+                  "content": "v.quiros@corp.com"
+                },
+                "zrnAS": {
+                  "content": "+506 2200-1229"
+                },
+                "E3Ge2U": {
+                  "content": "2229"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "U9Bc5j",
+          "name": "ms2pag",
+          "width": "fill_container",
+          "fill": "#ffffff",
+          "gap": 10,
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "N8p8id",
+              "name": "ms2prev",
+              "opacity": 0.38,
+              "cornerRadius": 8,
+              "stroke": "#e2e4e7",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                7,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "F1acsQ",
+                  "fill": "#646970",
+                  "content": "← Ant.",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "S18NCw",
+              "fill": "#646970",
+              "content": "1–20 de 47 en Engineering",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "dCmCn",
+              "name": "ms2next",
+              "cornerRadius": 8,
+              "stroke": "#0073aa",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "padding": [
+                7,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bVrmL",
+                  "fill": "#0073aa",
+                  "content": "Sig. →",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fileToken": "875d1050-adf0-4e5f-9705-d22a3060f783"
+}
