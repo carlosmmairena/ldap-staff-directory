@@ -238,6 +238,10 @@ class LDAP_ED_Connector {
 	/**
 	 * Search the LDAP directory and return an array of user data.
 	 *
+	 * The returned array's order is NOT guaranteed — it reflects whatever order
+	 * the LDAP server returned entries in. Callers that need a specific display
+	 * order (e.g. the shortcode's employee_order setting) must sort explicitly.
+	 *
 	 * @return array|\WP_Error
 	 */
 	public function get_users() {
@@ -275,11 +279,6 @@ class LDAP_ED_Connector {
 				'extension'  => $this->get_entry_value( $entry, $ext_attr_key ) ?? '',
 			);
 		}
-
-		// Sort alphabetically by name.
-		usort( $users, function ( $a, $b ) {
-			return strcmp( $a['name'], $b['name'] );
-		} );
 
 		$this->disconnect();
 		return $users;

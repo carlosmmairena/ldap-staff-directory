@@ -144,6 +144,7 @@ $ldap_ed_tabs = array(
 				$this->render_field_enable_search();
 				printf( '</div>' );
 				$this->row( __( 'Department order', 'ldap-staff-directory' ), 'ldap_ed_department_order', array( $this, 'render_field_department_order' ) );
+				$this->row( __( 'Employee order', 'ldap-staff-directory' ), 'ldap_ed_employee_order', array( $this, 'render_field_employee_order' ) );
 				?>
 			</div>
 
