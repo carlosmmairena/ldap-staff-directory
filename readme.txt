@@ -4,7 +4,7 @@ Tags:              ldap, directory, wpbeaverbuilder, staff, elementor
 Requires at least: 5.8
 Tested up to:      7.1
 Requires PHP:      7.4
-Stable tag:        1.3.0
+Stable tag:        1.4.0
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Connects to an LDAP or LDAPS server and displays an employee directory from a sp
 * Native Elementor widget with full style controls
 * Native Beaver Builder module with General and Style tabs
 * Public directory browses department-first: a menu of departments (with employee counts) leads to each department's contact list, in configurable order (alphabetical or by contact count)
+* Employee cards within a department can be ordered by name or job title, ascending or descending, from the admin — no code changes needed
 * Exclude specific departments — or employees with no department assigned — from the public directory, enforced at the LDAP query level so those employees are never fetched
 * Exclude disabled Active Directory accounts
 * Server-side search and pagination, with configurable items per page
@@ -88,6 +89,9 @@ Starting in 1.3.0, the public directory browses department-first: visitors see a
 4. Beaver Builder module tabs
 
 == Changelog ==
+
+= 1.4.0 =
+* Feature: New **Employee order** setting under **Settings → LDAP Directory → Fields** lets you choose how employee cards are ordered within a department: by name or job title, ascending or descending. Ties on job title (including employees with no title) are always broken by name (A–Z).
 
 = 1.3.0 =
 * Feature: The public directory now browses department-first. The root view shows a menu of departments (name, employee count, color-coded avatar) instead of the full employee grid; clicking a department opens its filtered, paginated contact list with a breadcrumb back to the menu.

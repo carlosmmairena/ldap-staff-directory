@@ -147,6 +147,12 @@ class LDAP_ED_Admin {
 				? $raw_department_order
 				: 'alpha';
 
+			$allowed_employee_orders = array( 'name_asc', 'name_desc', 'title_asc', 'title_desc' );
+			$raw_employee_order      = sanitize_text_field( $input['employee_order'] ?? 'name_asc' );
+			$clean['employee_order'] = in_array( $raw_employee_order, $allowed_employee_orders, true )
+				? $raw_employee_order
+				: 'name_asc';
+
 			$clean['cache_ttl'] = absint( $input['cache_ttl'] ?? 60 );
 
 			$display_changed = ( $existing['extension_attr'] ?? '' ) !== $clean['extension_attr'];
@@ -584,6 +590,33 @@ class LDAP_ED_Admin {
 		printf(
 			'</select><p class="description">%s</p>',
 			esc_html__( 'Order of the department filter chips shown to visitors on the public directory.', 'ldap-staff-directory' )
+		);
+	}
+
+	public function render_field_employee_order() {
+		$saved   = $this->get_option( 'employee_order', 'name_asc' );
+		$options = array(
+			'name_asc'   => __( 'Name (A–Z)', 'ldap-staff-directory' ),
+			'name_desc'  => __( 'Name (Z–A)', 'ldap-staff-directory' ),
+			'title_asc'  => __( 'Title (A–Z)', 'ldap-staff-directory' ),
+			'title_desc' => __( 'Title (Z–A)', 'ldap-staff-directory' ),
+		);
+
+		printf(
+			'<select id="ldap_ed_employee_order" name="%1$s[employee_order]">',
+			esc_attr( LDAP_ED_OPTION_KEY )
+		);
+		foreach ( $options as $ldap_ed_order_value => $ldap_ed_order_label ) {
+			printf(
+				'<option value="%1$s" %2$s>%3$s</option>',
+				esc_attr( $ldap_ed_order_value ),
+				selected( $saved, $ldap_ed_order_value, false ),
+				esc_html( $ldap_ed_order_label )
+			);
+		}
+		printf(
+			'</select><p class="description">%s</p>',
+			esc_html__( 'Order of the employee cards within a department on the public directory. Ties on title are broken by name (A–Z).', 'ldap-staff-directory' )
 		);
 	}
 

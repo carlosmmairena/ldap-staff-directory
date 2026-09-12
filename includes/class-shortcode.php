@@ -142,6 +142,10 @@ class LDAP_ED_Shortcode {
 		// Apply department and search filters in PHP.
 		$filtered_users = $this->filter_users( $all_users, $ldap_ed_search_query, $ldap_ed_current_dept );
 
+		// Sort the filtered result before paginating, so order is consistent across pages.
+		$ldap_ed_employee_order = $settings['employee_order'] ?? 'name_asc';
+		$filtered_users         = $this->sort_users( $filtered_users, $ldap_ed_employee_order );
+
 		// Paginate the filtered result.
 		$pagination            = $this->paginate_users( $filtered_users, $ldap_ed_current_page, $ldap_ed_per_page );
 		$ldap_ed_users         = $pagination['users'];
@@ -291,6 +295,47 @@ class LDAP_ED_Shortcode {
 		}
 
 		return $counts;
+	}
+
+	/**
+	 * Sort a user array for display, per the employee_order setting.
+	 *
+	 * Ties on title (including empty title) are always broken by name ascending,
+	 * regardless of the primary order's direction — this is intentional, not a bug.
+	 * Falls back to 'name_asc' for any value outside the known whitelist.
+	 *
+	 * @param array  $users Filtered user array.
+	 * @param string $order 'name_asc' (default), 'name_desc', 'title_asc', or 'title_desc'.
+	 * @return array Sorted array (re-indexed).
+	 */
+	private function sort_users( array $users, string $order = 'name_asc' ): array {
+		$allowed_orders = array( 'name_asc', 'name_desc', 'title_asc', 'title_desc' );
+		if ( ! in_array( $order, $allowed_orders, true ) ) {
+			$order = 'name_asc';
+		}
+
+		usort(
+			$users,
+			static function ( $a, $b ) use ( $order ) {
+				if ( 'name_desc' === $order ) {
+					return strcmp( $b['name'] ?? '', $a['name'] ?? '' );
+				}
+
+				if ( 'title_asc' === $order || 'title_desc' === $order ) {
+					$result = strcmp( $a['title'] ?? '', $b['title'] ?? '' );
+					if ( 'title_desc' === $order ) {
+						$result = -$result;
+					}
+					// Tie on title: always break by name ascending, regardless of direction.
+					return 0 !== $result ? $result : strcmp( $a['name'] ?? '', $b['name'] ?? '' );
+				}
+
+				// name_asc (default).
+				return strcmp( $a['name'] ?? '', $b['name'] ?? '' );
+			}
+		);
+
+		return array_values( $users );
 	}
 
 	/**
