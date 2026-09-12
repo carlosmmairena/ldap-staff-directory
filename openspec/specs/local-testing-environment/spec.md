@@ -1,11 +1,15 @@
 ## ADDED Requirements
 
 ### Requirement: Local WordPress environment via wp-env
-The project SHALL provide a local WordPress environment managed by `wp-env` (`.wp-env.json`), with no custom `Dockerfile` or `docker-compose.yml`, for manual visual QA of the plugin's shortcode, Elementor widget, and Beaver Builder module.
+The project SHALL provide a local WordPress environment managed by `wp-env` (`.wp-env.json`), with no custom `Dockerfile` or `docker-compose.yml`, for manual visual QA of the plugin's shortcode, Elementor widget, and Beaver Builder module. The `phpVersion` pinned in `.wp-env.json` SHALL be a version whose official Docker image is still actively rebuilt on a supported Debian base (not EOL) at the time it is set, so `wp-env start` does not depend on an unmaintained OS image for its Docker layer.
 
 #### Scenario: Starting the local environment
 - **WHEN** a developer runs `wp-env start` from the plugin root
 - **THEN** a WordPress site with the plugin active is reachable locally, without any project-owned Docker image being built
+
+#### Scenario: Pinned PHP version is not tied to an EOL Debian base
+- **WHEN** `.wp-env.json`'s `phpVersion` is read (currently `8.3`, Debian Bookworm-based)
+- **THEN** `apt-get update` succeeds unmodified inside the `wordpress`/`tests-wordpress` containers — no sources.list patching or archive-mirror workaround is needed for `bin/install-php-ldap-ext.sh` to run
 
 ### Requirement: PHP ldap extension available in wp-env containers
 Since none of wp-env's base images ship the PHP `ldap` extension that `LDAP_ED_Connector` depends on directly, the project SHALL provision it automatically into every wp-env container (`wordpress`, `tests-wordpress`, `cli`, `tests-cli`) whenever `wp-env start` runs, with no manual step required.
@@ -34,7 +38,7 @@ The project SHALL provide a disposable OpenLDAP container (`openldap-test`), sta
 - **THEN** this SHALL NOT be exercised against `openldap-test`, because that matching rule is Active-Directory-specific and unsupported by standard OpenLDAP; it remains a manual verification against the real LDAP/AD server
 
 ### Requirement: Layered automated test suite
-The project SHALL provide a PHPUnit suite (`phpunit.xml.dist`, one file, three testsuites: `unit`, `wp`, `ldap`) that can run any single layer independently and all layers together, using `yoast/phpunit-polyfills` via Composer for cross-version compatibility.
+The project SHALL provide a PHPUnit suite (`phpunit.xml.dist`, one file, three testsuites: `unit`, `wp`, `ldap`) that can run any single layer independently and all layers together, using `yoast/phpunit-polyfills` via Composer for cross-version compatibility. `composer.json`'s `require-dev` PHPUnit version and `config.platform.php` SHALL both support the PHP version currently pinned in `.wp-env.json`, so Composer resolves the same runtime that actually executes the suite.
 
 #### Scenario: Unit layer needs no WordPress or LDAP
 - **WHEN** the `unit` testsuite runs (covering `ldap_ed_split_server_scheme()` and the Sodium encrypt/decrypt helpers)
@@ -47,6 +51,10 @@ The project SHALL provide a PHPUnit suite (`phpunit.xml.dist`, one file, three t
 #### Scenario: ldap layer exercises the real connector
 - **WHEN** the `ldap` testsuite runs (covering `LDAP_ED_Connector`)
 - **THEN** it binds and searches against the running `openldap-test` container and asserts, among other things, that `get_departments()` never applies `excluded_departments` or `exclude_no_department` regardless of current settings, and that `exclude_no_department`/`excluded_departments` filtering itself behaves correctly — `exclude_disabled` is excluded from this testsuite (see the fixture scenario above)
+
+#### Scenario: Composer platform config matches the pinned wp-env PHP version
+- **WHEN** `composer install` runs (locally or in `bin/test.sh` step 4)
+- **THEN** `composer.json`'s `config.platform.php` equals `.wp-env.json`'s `phpVersion` (currently `8.3`), and the resolved `phpunit/phpunit` version fully supports that PHP version — Composer never silently resolves dependencies against a stale PHP floor while the containers run a newer one
 
 ### Requirement: Sequential test wizard
 The project SHALL provide a single entry-point script (`bin/test.sh`) that runs exactly four steps in fixed order — Docker availability, `wp-env start`, `openldap-test` up and seeded, PHPUnit — reporting pass/fail per step, and SHALL stop at the first failing step without prompting the user for input.
